@@ -5,7 +5,7 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 
 **INDICE**
 
-* [Introduzione](#<a> introduzione <a>)
+* [Introduzione](<a> introduzione <a>)
 * [Installazione]()
 * [Configurazione]()
 * [Rotte disponibili]()
