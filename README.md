@@ -5,36 +5,45 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 
 **INDICE**
 
-* [Introduzione](<a> introduzione <a>)
-* [Installazione]()
-* [Configurazione]()
-* [Rotte disponibili]()
-* [Test]()
-* [Documentazione]()
-* [Struttura del progetto]()
-* [Software utilizzati]()
-* [Autori]()
+* [Introduzione](#introduzione)
+* [Installazione](#installazione)
+* [Configurazione](#configurazione)
+* [Rotte disponibili](#rotte)
+* [Test](#test)
+* [Documentazione](#documentazione)
+* [Struttura del progetto](#struttura)
+* [Software utilizzati](#software)
+* [Autori](#autori)
 
+<a name="introduzione"></a>
 ## Introduzione 
 
+<a name="installazione"></a>
 ## Installazione
 
+<a name="configurazione"></a>
 ## Configurazione 
 
+<a name="rotte"></a>
 ## Rotte disponibili
 
+<a name="test"></a>
 ## Test
 
+<a name="documentazione"></a>
 ## Documentazione
 
+<a name="struttura"></a>
 ## Struttura del progetto
 
+<a name="software"></a>
 ## Software utilizzati
 1. [Eclipse](https://www.eclipse.org/downloads/), ambiente principale di sviluppo
 2. [Maven](https://maven.apache.org/), plug-in per la gestione delle librerie e dei progetti
 3. [SpringBoot](https://spring.io/projects/spring-boot), framework per la realizzazione di applicazioni in Java
 4. [Postman](https://www.postman.com/), piattaforma API che consente di effettuare le varie richieste
 
+<a name="autori"></a>
 ## Autori
 Il seguente progetto è stato realizzato da:
 1. Francesca Colacrai
