@@ -5,7 +5,7 @@ import java.util.Vector;
 /** Classe che descrive le proprietà della città e le previsioni meteo raccolte.
  * 
  *  @author Francesca Colacrai
- *  @author Djouaka kelefack lionel
+ *  @author Djouaka Kelefack Lionel
  */
 public class Citta {
 	
@@ -26,6 +26,22 @@ public class Citta {
 	
 	/** Vettore che contiene i dati meteo della città */
 	private Vector<Meteo> raccoltaDatiMeteo;
+	
+	/** Costruttore della classe
+	 * @param nome Nome della città
+	 * @param paese Paese della città
+	 */
+	public Citta(String nome, String paese) {
+		nomecitta = nome;
+		paesecitta = paese;
+	}
+	
+	/** Costruttore della classe
+	 * @param id Identificativo della città
+	 */
+	public Citta(long id) {
+		idcitta = id;
+	}
 	
 	/** Costruttore della classe che inizializza tutti gli attributi
 	 * 
