@@ -159,8 +159,8 @@ public class Citta {
 		System.out.println("I dati relativi alla città cercata sono: \n");
 		String risultati = "nome=" + nomecitta + ", Paese=" + paesecitta + 
 				",id=" + idcitta + ", latitudine=" + latitudine + 
-				", longitudine=" + longitudine + "dati meteo raccolti=" + showVector() +
-				".";
+				", longitudine=" + longitudine + "dati meteo raccolti=" + 
+				showVector() + ".";
 		return risultati;
 	}
 }
