@@ -9,53 +9,57 @@ package it.univpm.OpenWeatherApp.models;
  */
 public class Meteo {
 	
-	/** Pressione prevista per la città */
-	private double pressionePrevista;
+	/** Dati meteo generali della città */
+	private String main;
 	
-	/** Pressione effettiva per la città s*/
-	private double pressioneEffettiva;
+	/** Temperatura massima */
+	private double t_max;
+	
+	/** Temperatura minima */
+	private double t_min;
+	
+	/** Data del rilevamento */
+	private String data;
 	
 	/** Costruttore della classe */
 	public Meteo() {
-		this.pressionePrevista = 0;
-		this.pressioneEffettiva = 0;
+		this.main = null;
+		this.t_max = 0;
+		this.t_min = 0;
+		this.data = null;
 	}
 	
-	/** Costruttore della classe che inizializza tutti gli attributi
-	 * @param p1 Pressione prevista
-	 * @param p2 Pressione effettiva
+	/** Costruttore della classe 
+	 * @param main Dati meteo generali
+	 * @param data Data del rilevamento dati
 	 */
-	public Meteo(double p1, double p2) {
-		pressionePrevista = p1;
-		pressioneEffettiva = p2;
+	public Meteo(String main, String data) {
+		super();
+		this.main = main;
+		this.data = data;
 	}
-
-	/** Metodo getter
-	 * @return Pressione prevista
+	
+	/** Costruttore della classe
+	 * @param t_max Temperatura massima
+	 * @param t_min Temperatura minima
 	 */
-	public double getPressionePrevista() {
-		return pressionePrevista;
+	public Meteo(double t_max, double t_min) {
+		super();
+		this.t_max = t_max;
+		this.t_min = t_min;
 	}
-
-	/** Metodo setter
-	 * @param pressioneP Pressione prevista
+	
+	/** Costruttore della classe
+	 * @param main Dati meteo generali
+	 * @param t_min Temperatura minima
+	 * @param t_max Temperatura massima
+	 * @param data Data del rilevamento dati
 	 */
-	public void setPressionePrevista(double pressioneP) {
-		pressionePrevista = pressioneP;
-	}
-
-	/** Metodo getter
-	 * @return Pressione effettiva
-	 */
-	public double getPressioneEffettiva() {
-		return pressioneEffettiva;
-	}
-
-	/** Metodo setter
-	 * @param pressioneP Pressione effettiva
-	 */
-	public void setPressioneEffettiva(double pressioneE) {
-		pressioneEffettiva = pressioneE;
+	public Meteo(String main, double t_min, double t_max, String data) {
+		this.main = main;
+		this.t_min = t_min;
+		this.t_max = t_max;
+		this.data = data;
 	}
 	
 	/** Override del metodo toString
@@ -63,8 +67,8 @@ public class Meteo {
 	 */
 	@Override
 	public String toString() {
-		String dati = "Pressione prevista=" + pressionePrevista +
-				", pressione effettiva=" + pressioneEffettiva + ".";
+		String dati = "Main=" + main + ", temperatura minima=" + t_min +
+				", temperatura massima=" + t_max + "data misurazione=" + data + ".";
 		return dati;
 	}
 }
