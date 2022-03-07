@@ -62,6 +62,62 @@ public class Meteo {
 		this.data = data;
 	}
 	
+	/** Metodo getter
+	 * @return Dati meteo generali della città
+	 */
+	public String getMain() {
+		return main;
+	}
+
+	/** Metodo setter
+	 * @param main Dati generali relativi al meteo della città
+	 */
+	public void setMain(String main) {
+		this.main = main;
+	}
+
+	/** Metodo getter
+	 * @return Temperatura massima 
+	 */ 
+	public double getT_max() {
+		return t_max;
+	}
+
+	/** Metodo setter
+	 * @param t_max Temperatura massima
+	 */
+	public void setT_max(double t_max) {
+		this.t_max = t_max;
+	}
+
+	/** Metodo getter
+	 * @return Temperatura minima
+	 */
+	public double getT_min() {
+		return t_min;
+	}
+
+	/** Metodo setter
+	 * @param t_min Temperatura minima
+	 */
+	public void setT_min(double t_min) {
+		this.t_min = t_min;
+	}
+
+	/** Metodo getter
+	 * @return Data previsione dati meteo 
+	 */
+	public String getData() {
+		return data;
+	}
+
+	/** Metodo setter
+	 * @param data Data previsione dati meteo
+	 */
+	public void setData(String data) {
+		this.data = data;
+	}
+
 	/** Override del metodo toString
 	 *  @return valore della pressione prevista ed effettiva
 	 */
