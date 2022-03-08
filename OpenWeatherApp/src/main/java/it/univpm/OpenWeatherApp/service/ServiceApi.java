@@ -5,6 +5,7 @@ import it.univpm.OpenWeatherApp.models.Meteo;
 import org.json.simple.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Vector;
@@ -20,7 +21,7 @@ public abstract class ServiceApi implements Service{
 
         RestTemplate restTemplate = new RestTemplate();
 
-        JSONObject jsonObject = new JSONObject(Objects.requireNonNull(restTemplate.getForObject(url, Map.class)));
+        JSONObject jsonObject = new JSONObject(Objects.requireNonNull(restTemplate.getForObject(url, HashMap.class)));
 
         return jsonObject;
 
