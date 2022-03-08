@@ -27,6 +27,14 @@ public class Citta {
 	/** Vettore che contiene i dati meteo della città */
 	private Vector<Meteo> raccoltaDatiMeteo;
 	
+	public Citta() {
+		this.nomecitta = null;
+		this.paesecitta = null;
+		this.idcitta = 0;
+		this.longitudine = 0;
+		this.latitudine = 0;
+	}
+	
 	/** Costruttore della classe
 	 * @param nome Nome della città
 	 * @param paese Paese della città
