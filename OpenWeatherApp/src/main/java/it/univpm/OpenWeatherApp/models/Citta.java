@@ -181,4 +181,15 @@ public class Citta {
 				showVector() + ".";
 		return risultati;
 	}
+	@Override
+	public boolean equals(Object object) {
+		if (this == object)
+			return true;
+		if (object == null)
+			return false;
+		if (getClass() != object.getClass())
+			return false;
+		if (nomecitta == null) ;
+		return false;
+	}
 }

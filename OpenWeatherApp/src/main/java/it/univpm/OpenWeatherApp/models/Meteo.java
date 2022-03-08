@@ -127,4 +127,36 @@ public class Meteo {
 				", temperatura massima=" + t_max + "data misurazione=" + data + ".";
 		return dati;
 	}
+
+	/** Override del metodo equals
+	 *  @questo metodo confronte i datti Meteo con il tipo boolean (true o false)per vedere se sono uguali o no
+	 */
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object)
+			return true;
+		if (object == null)
+			return false;
+		if (getClass() != object.getClass())
+			return false;
+		Meteo other = (Meteo) object;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (main == null) {
+			if (other.main != null)
+				return false;
+		} else if (!main.equals(other.main))
+			return false;
+		if (Double.doubleToLongBits(t_max) != Double.doubleToLongBits(other.t_max))
+			return false;
+		if (Double.doubleToLongBits(t_min) != Double.doubleToLongBits(other.t_min))
+			return false;
+		if (data != other.data)
+			return false;
+		return true;
+	}
 }
