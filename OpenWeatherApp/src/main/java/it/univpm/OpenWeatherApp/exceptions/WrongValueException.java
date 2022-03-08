@@ -1,4 +1,4 @@
-package it.univpm.OpenWeatherApp.service;
+package it.univpm.OpenWeatherApp.exceptions;
 
 public class WrongValueException extends Exception {
 }

@@ -1,5 +1,9 @@
 package it.univpm.OpenWeatherApp.service;
 
+import it.univpm.OpenWeatherApp.exceptions.CittaNotFoundException;
+import it.univpm.OpenWeatherApp.exceptions.EmptyStringException;
+import it.univpm.OpenWeatherApp.exceptions.WrongPeriodException;
+import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
 import it.univpm.OpenWeatherApp.models.*;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
