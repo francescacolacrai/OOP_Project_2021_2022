@@ -23,7 +23,18 @@ public class Citta {
 	
 	/** Longitudine della città */
 	private double longitudine;
-	
+
+	/** Pressione della città */
+	private double pressione;
+
+	public double getPressione() {
+		return pressione;
+	}
+
+	public void setPressione(double pressione) {
+		this.pressione = pressione;
+	}
+
 	/** Vettore che contiene i dati meteo della città */
 	private Vector<Meteo> raccoltaDatiMeteo;
 	
@@ -42,24 +53,31 @@ public class Citta {
 	public Citta(long id) {
 		idcitta = id;
 	}
-	
-	/** Costruttore della classe che inizializza tutti gli attributi
-	 * 
-	 * @param nome Nome della città
+
+	/**
+	 * Costruttore della classe che inizializza tutti gli attributi
+	 *
+	 * @param nome  Nome della città
 	 * @param paese Paese di appartenenza della città
-	 * @param id Identificativo della città 
-	 * @param lat Latitudine della città 
-	 * @param lon Longitudine della città
+	 * @param id    Identificativo della città
+	 * @param lat   Latitudine della città
+	 * @param lon   Longitudine della città
 	 */
-	public Citta (String nome, String paese, long id, double lat, double lon) {
-		nomecitta = nome;
-		paesecitta = paese;
-		idcitta = id;
-		latitudine = lat;
-		longitudine = lon;
-		this.raccoltaDatiMeteo = new Vector<Meteo>();
+	public Citta(String nome, String paese, long id, double lat, double lon, double pressure) {
+		{
+			nomecitta = nome;
+			paesecitta = paese;
+			idcitta = id;
+			latitudine = lat;
+			longitudine = lon;
+			pressione = pressure;
+			this.raccoltaDatiMeteo = new Vector<Meteo>();
+		}
 	}
-	
+
+	public Citta(String nome) {
+	}
+
 	/** Metodo getter
 	 * @return Nome della città 
 	 */
@@ -159,7 +177,7 @@ public class Citta {
 		System.out.println("I dati relativi alla città cercata sono: \n");
 		String risultati = "nome=" + nomecitta + ", Paese=" + paesecitta + 
 				",id=" + idcitta + ", latitudine=" + latitudine + 
-				", longitudine=" + longitudine + "dati meteo raccolti=" + 
+				", longitudine=" + longitudine + "dati meteo raccolti=" +
 				showVector() + ".";
 		return risultati;
 	}

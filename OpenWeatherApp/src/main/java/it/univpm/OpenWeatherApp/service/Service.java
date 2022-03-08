@@ -12,6 +12,7 @@ public interface Service {
 	public abstract JSONObject getMeteoCitta(String citta);
 	public abstract JSONArray getPressioneCitta(String nome);
 	public abstract String SalvaDatiCitta(String nomeCitta);
+	public abstract Citta getCittafromApi(String citta);
 
 
 	public abstract ArrayList<JSONObject> readHistoryError(ArrayList<String> citta, int error, String value, int pressione)
