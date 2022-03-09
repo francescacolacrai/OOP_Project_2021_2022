@@ -9,26 +9,61 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 
 @org.springframework.stereotype.Service
 
 public class ServiceApi implements Service{
     private String API_KEY = "ce74fd08278903109816b3acfe7eb4fb";
+    /**
 
-//metodo per prendere le previoni meteo di una citta
+        metodo per prendere le previoni meteo di una citta
+
+     **/
 
  public Citta getMeteoCitta(String citta) {
+     try {
+         URL url = new URL("api.openweathermap.org/data/2.5/forecast?q=Milano&appid=" + API_KEY);
 
-     JSONObject object;
+         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+         connection.setRequestMethod("GET");
+         connection.connect();
+
+         int responseCode = connection.getResponseCode();
+
+         if(responseCode != 200) {
+             throw new RuntimeException("HttpResponseCode: " + responseCode);
+
+         }else {
+
+             StringBuilder informationString = new StringBuilder();
+             Scanner scanner = new Scanner(url.openStream());
+
+             while (scanner.hasNext()) {
+                 informationString.append(scanner.nextLine());
+             }
+             scanner.close();
+             System.out.println(informationString);
+
+         }
+     }catch(Exception e) {
+         e.printStackTrace();
+     }
+     return null;
+ }
+/*
+     JSONObject jsonObject;
      String url = "api.openweathermap.org/data/2.5/weather?q=" + citta + "&appid="+API_KEY;
      RestTemplate restTemplate = new RestTemplate();
-     object = new JSONObject(restTemplate.getForObject(url, String.class));
-     return object;
+     jsonObject = new JSONObject(restTemplate.getForObject(url, String.class));
+     return jsonObject;
+*/
 
-    }
 
 
     /**

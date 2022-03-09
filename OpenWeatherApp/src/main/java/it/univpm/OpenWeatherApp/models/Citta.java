@@ -1,5 +1,7 @@
 package it.univpm.OpenWeatherApp.models;
 
+import org.json.simple.JSONObject;
+
 import java.util.Vector;
 
 /** Classe che descrive le proprietà della città e le previsioni meteo raccolte.
@@ -7,7 +9,7 @@ import java.util.Vector;
  *  @author Francesca Colacrai
  *  @author Djouaka Kelefack Lionel
  */
-public class Citta {
+public class Citta  {
 	
 	/** Nome della città */
 	private String nomecitta;
@@ -39,12 +41,10 @@ public class Citta {
 	private Vector<Meteo> raccoltaDatiMeteo;
 	
 	/** Costruttore della classe
-	 * @param nome Nome della città
-	 * @param paese Paese della città
 	 */
-	public Citta(String nome, String paese) {
-		nomecitta = nome;
-		paesecitta = paese;
+	public Citta() {
+		nomecitta = getNome();
+		paesecitta =getPaese();
 	}
 	
 	/** Costruttore della classe

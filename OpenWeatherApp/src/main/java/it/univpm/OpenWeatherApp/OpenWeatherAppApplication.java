@@ -11,11 +11,11 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class OpenWeatherAppApplication {
-	private static String API_KEY ="ce74fd08278903109816b3acfe7eb4fb";
+	//private static String API_KEY ="ce74fd08278903109816b3acfe7eb4fb";
 
 	public static void main(String[] args) {
 		SpringApplication.run(OpenWeatherAppApplication.class, args);
-
+/*
 		try {
 
 			URL url = new URL("api.openweathermap.org/data/2.5/weather?q=Ancone&appid=" + API_KEY);
@@ -43,7 +43,7 @@ public class OpenWeatherAppApplication {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 }
