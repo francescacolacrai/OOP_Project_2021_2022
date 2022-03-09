@@ -18,6 +18,9 @@ public class Meteo {
 	/** Temperatura minima */
 	private double t_min;
 	
+	/** Pressione */
+	private int pressione;
+	
 	/** Data del rilevamento */
 	private String data;
 	
@@ -26,6 +29,7 @@ public class Meteo {
 		this.main = null;
 		this.t_max = 0;
 		this.t_min = 0;
+		this.pressione = 0;
 		this.data = null;
 	}
 	
@@ -43,10 +47,11 @@ public class Meteo {
 	 * @param t_max Temperatura massima
 	 * @param t_min Temperatura minima
 	 */
-	public Meteo(double t_max, double t_min) {
+	public Meteo(double t_max, double t_min, int pressione) {
 		super();
 		this.t_max = t_max;
 		this.t_min = t_min;
+		this.pressione = pressione;
 	}
 	
 	/** Costruttore della classe
@@ -55,10 +60,11 @@ public class Meteo {
 	 * @param t_max Temperatura massima
 	 * @param data Data del rilevamento dati
 	 */
-	public Meteo(String main, double t_min, double t_max, String data) {
+	public Meteo(String main, double t_min, double t_max, int pressione, String data) {
 		this.main = main;
 		this.t_min = t_min;
 		this.t_max = t_max;
+		this.pressione = pressione;
 		this.data = data;
 	}
 	
@@ -104,6 +110,20 @@ public class Meteo {
 		this.t_min = t_min;
 	}
 
+	/** Metodo getter
+	 * @return Pressione
+	 */
+	public double getPressione() {
+		return pressione;
+	}
+
+	/** Metodo setter
+	 * @param p Pressione 
+	 */
+	public void setPressione(int p) {
+		pressione = p;
+	}
+	
 	/** Metodo getter
 	 * @return Data previsione dati meteo 
 	 */
