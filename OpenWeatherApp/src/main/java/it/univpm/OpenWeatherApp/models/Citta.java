@@ -50,10 +50,10 @@ public class Citta  {
 	
 	/** Costruttore della classe
 	 */
-	public Citta() {
-		nomecitta = getNome();
-		paesecitta =getPaese();
-	}
+	//public Citta() {
+	//	nomecitta = nome;
+	//	paesecitta =paese();
+	//}
 	
 	/** Costruttore della classe
 	 * @param id Identificativo della città
