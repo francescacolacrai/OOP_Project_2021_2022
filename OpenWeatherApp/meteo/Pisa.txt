@@ -1,0 +1,16 @@
+{"coord":{"lon":10.3966,"lat":43.7155},"weather":[{"id":801,"main":"Clouds","description":"poche nuvole","icon":"02d"}],"base":"stations","main":{"temp":13.19,"feels_like":11.66,"temp_min":11.95,"temp_max":14.98,"pressure":1024,"humidity":42},"visibility":10000,"wind":{"speed":4.63,"deg":110},"clouds":{"all":20},"dt":1647172125,"sys":{"type":1,"id":6803,"country":"IT","sunrise":1647149685,"sunset":1647192078},"timezone":3600,"id":3170647,"name":"Pisa","cod":200}
+
+Data: 13-03-2022, 12:52:03
+
+{"coord":{"lon":10.3966,"lat":43.7155},"weather":[{"id":801,"main":"Clouds","description":"poche nuvole","icon":"02d"}],"base":"stations","main":{"temp":14.1,"feels_like":12.58,"temp_min":12.95,"temp_max":15.54,"pressure":1023,"humidity":39},"visibility":10000,"wind":{"speed":3.09,"deg":90},"clouds":{"all":20},"dt":1647175200,"sys":{"type":1,"id":6803,"country":"IT","sunrise":1647149685,"sunset":1647192078},"timezone":3600,"id":3170647,"name":"Pisa","cod":200}
+
+Data: 13-03-2022, 13:51:41
+
+{"coord":{"lon":10.3966,"lat":43.7155},"weather":[{"id":802,"main":"Clouds","description":"nubi sparse","icon":"03n"}],"base":"stations","main":{"temp":11.05,"feels_like":9.78,"temp_min":10.16,"temp_max":12.34,"pressure":1024,"humidity":60},"visibility":10000,"wind":{"speed":2.57,"deg":280},"clouds":{"all":40},"dt":1647194052,"sys":{"type":1,"id":6803,"country":"IT","sunrise":1647149685,"sunset":1647192078},"timezone":3600,"id":3170647,"name":"Pisa","cod":200}
+
+Data: 13-03-2022, 18:58:14
+
+{"coord":{"lon":10.3966,"lat":43.7155},"weather":[{"id":802,"main":"Clouds","description":"nubi sparse","icon":"03n"}],"base":"stations","main":{"temp":11.13,"feels_like":9.84,"temp_min":10.16,"temp_max":12.34,"pressure":1023,"humidity":59},"visibility":10000,"wind":{"speed":2.57,"deg":280},"clouds":{"all":40},"dt":1647194208,"sys":{"type":1,"id":6803,"country":"IT","sunrise":1647149685,"sunset":1647192078},"timezone":3600,"id":3170647,"name":"Pisa","cod":200}
+
+Data: 13-03-2022, 18:58:54
+

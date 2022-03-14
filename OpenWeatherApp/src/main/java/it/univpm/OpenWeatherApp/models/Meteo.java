@@ -13,10 +13,10 @@ public class Meteo {
 	private String main;
 	
 	/** Temperatura massima */
-	private double t_max;
+	//private double t_max;
 	
 	/** Temperatura minima */
-	private double t_min;
+	//private double t_min;
 	
 	/** Pressione */
 	private int pressione;
@@ -27,8 +27,8 @@ public class Meteo {
 	/** Costruttore della classe */
 	public Meteo() {
 		this.main = null;
-		this.t_max = 0;
-		this.t_min = 0;
+		//this.t_max = 0;
+		//this.t_min = 0;
 		this.pressione = 0;
 		this.data = null;
 	}
@@ -46,11 +46,10 @@ public class Meteo {
 	/** Costruttore della classe
 	 * @param t_max Temperatura massima
 	 * @param t_min Temperatura minima
+	 * @param pressione Pressione 
 	 */
-	public Meteo(double t_max, double t_min, int pressione) {
+	public Meteo(int pressione) {
 		super();
-		this.t_max = t_max;
-		this.t_min = t_min;
 		this.pressione = pressione;
 	}
 	
@@ -58,13 +57,12 @@ public class Meteo {
 	 * @param main Dati meteo generali
 	 * @param t_min Temperatura minima
 	 * @param t_max Temperatura massima
+	 * @param p Pressione
 	 * @param data Data del rilevamento dati
 	 */
-	public Meteo(String main, double t_min, double t_max, int pressione, String data) {
+	public Meteo(String main, int p, String data) {
 		this.main = main;
-		this.t_min = t_min;
-		this.t_max = t_max;
-		this.pressione = pressione;
+		pressione = p;
 		this.data = data;
 	}
 	
@@ -84,32 +82,36 @@ public class Meteo {
 
 	/** Metodo getter
 	 * @return Temperatura massima 
-	 */ 
+	 *
 	public double getT_max() {
 		return t_max;
 	}
-
+	*/
+	
 	/** Metodo setter
 	 * @param t_max Temperatura massima
-	 */
+	 *
 	public void setT_max(double t_max) {
 		this.t_max = t_max;
 	}
-
+	*/
+	
 	/** Metodo getter
 	 * @return Temperatura minima
-	 */
+	 *
 	public double getT_min() {
 		return t_min;
 	}
-
+	*/
+	
 	/** Metodo setter
 	 * @param t_min Temperatura minima
-	 */
+	 *
 	public void setT_min(double t_min) {
 		this.t_min = t_min;
 	}
-
+	*/
+	
 	/** Metodo getter
 	 * @return Pressione
 	 */
@@ -124,6 +126,7 @@ public class Meteo {
 		pressione = p;
 	}
 	
+
 	/** Metodo getter
 	 * @return Data previsione dati meteo 
 	 */
@@ -143,8 +146,7 @@ public class Meteo {
 	 */
 	@Override
 	public String toString() {
-		String dati = "Main=" + main + ", temperatura minima=" + t_min +
-				", temperatura massima=" + t_max + "data misurazione=" + data + ".";
+		String dati = "Main=" + main + ", pressione=" + pressione + "data misurazione=" + data + ".";
 		return dati;
 	}
 
@@ -152,7 +154,8 @@ public class Meteo {
 	 *  @questo metodo confronte i datti Meteo con il tipo boolean (true o false)per vedere se sono uguali o no
 	 */
 
-	@Override
+	/**
+	 * @Override
 	public boolean equals(Object object) {
 		if (this == object)
 			return true;
@@ -179,4 +182,5 @@ public class Meteo {
 			return false;
 		return true;
 	}
+	*/
 }

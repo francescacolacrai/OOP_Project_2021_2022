@@ -1,0 +1,4 @@
+{"coord":{"lon":15.1602,"lat":41.8119},"weather":[{"id":800,"main":"Clear","description":"cielo sereno","icon":"01d"}],"base":"stations","main":{"temp":8.92,"feels_like":6.7,"temp_min":8.92,"temp_max":8.92,"pressure":1026,"humidity":46,"sea_level":1026,"grnd_level":995},"visibility":10000,"wind":{"speed":3.94,"deg":131,"gust":4.49},"clouds":{"all":0},"dt":1647172201,"sys":{"country":"IT","sunrise":1647148507,"sunset":1647190970},"timezone":3600,"id":3166680,"name":"Serracapriola","cod":200}
+
+Data: 13-03-2022, 12:50:01
+
