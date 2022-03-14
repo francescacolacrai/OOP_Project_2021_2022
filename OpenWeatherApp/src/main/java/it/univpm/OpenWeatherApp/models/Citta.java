@@ -1,6 +1,6 @@
 package it.univpm.OpenWeatherApp.models;
 
-import org.json.simple.JSONObject;
+//import org.json.simple.JSONObject;
 
 import java.util.Vector;
 
@@ -21,21 +21,21 @@ public class Citta  {
 	private long idcitta;
 	
 	/** Latitudine della città */
-	private double latitudine;
+	//private double latitudine;
 	
 	/** Longitudine della città */
-	private double longitudine;
+	//private double longitudine;
 
 	/** Pressione della città */
-	private double pressione;
+	//private double pressione;
 
-	public double getPressione() {
-		return pressione;
-	}
+	//public double getPressione() {
+	//	return pressione;
+	//}
 
-	public void setPressione(double pressione) {
-		this.pressione = pressione;
-	}
+	//public void setPressione(double pressione) {
+	//	this.pressione = pressione;
+	//}
 
 	/** Vettore che contiene i dati meteo della città */
 	private Vector<Meteo> raccoltaDatiMeteo;
@@ -44,15 +44,8 @@ public class Citta  {
 		this.nomecitta = null;
 		this.paesecitta = null;
 		this.idcitta = 0;
-		this.longitudine = 0;
-		this.latitudine = 0;
-	}
-	
-	/** Costruttore della classe
-	 */
-	public Citta() {
-		nomecitta = getNome();
-		paesecitta =getPaese();
+		//this.longitudine = 0;
+		//this.latitudine = 0;
 	}
 	
 	/** Costruttore della classe
@@ -61,29 +54,21 @@ public class Citta  {
 	public Citta(long id) {
 		idcitta = id;
 	}
-
+	
 	/**
 	 * Costruttore della classe che inizializza tutti gli attributi
 	 *
 	 * @param nome  Nome della città
 	 * @param paese Paese di appartenenza della città
 	 * @param id    Identificativo della città
-	 * @param lat   Latitudine della città
-	 * @param lon   Longitudine della città
 	 */
-	public Citta(String nome, String paese, long id, double lat, double lon, double pressure) {
+	public Citta(String nome, String paese, long id) {
 		{
 			nomecitta = nome;
 			paesecitta = paese;
 			idcitta = id;
-			latitudine = lat;
-			longitudine = lon;
-			pressione = pressure;
 			this.raccoltaDatiMeteo = new Vector<Meteo>();
 		}
-	}
-
-	public Citta(String nome) {
 	}
 
 	/** Metodo getter
@@ -130,31 +115,35 @@ public class Citta  {
 	
 	/** Metodo getter
 	 * @return Latitudine della città 
-	 */
+	 *
 	public double getLat() {
 		return latitudine;
 	}
+	*/
 	
 	/**Metodo setter
 	 * @param latitudine
-	 */
+	 *
 	public void setLat(double latitudine) {
 		this.latitudine = latitudine;
 	}
+	*/
 	
 	/** Metodo getter
 	 * @return Longitudine della città 
-	 */
+	 *
 	public double getLong() {
 		return longitudine;
 	}
+	*/
 	
 	/**Metodo setter
 	 * @param longitudine 
-	 */
+	 *
 	public void setLong(double longitudine) {
 		this.longitudine = longitudine;
 	}
+	*/
 	
 	/** Metodo getter
 	 * @return Vettore dei dati della città 
@@ -184,12 +173,13 @@ public class Citta  {
 	public String toString() {
 		System.out.println("I dati relativi alla città cercata sono: \n");
 		String risultati = "nome=" + nomecitta + ", Paese=" + paesecitta + 
-				",id=" + idcitta + ", latitudine=" + latitudine + 
-				", longitudine=" + longitudine + "dati meteo raccolti=" +
+				",id=" + idcitta + ", dati meteo raccolti=" +
 				showVector() + ".";
 		return risultati;
 	}
-	@Override
+	
+	/**
+	 * @Override
 	public boolean equals(Object object) {
 		if (this == object)
 			return true;
@@ -200,4 +190,5 @@ public class Citta  {
 		if (nomecitta == null) ;
 		return false;
 	}
+	*/
 }

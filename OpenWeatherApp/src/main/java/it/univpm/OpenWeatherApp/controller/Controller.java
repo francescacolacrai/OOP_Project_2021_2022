@@ -22,7 +22,7 @@ import it.univpm.OpenWeatherApp.service.*;
 public class Controller {
 
 	@Autowired 
-	static ServiceApi service = new ServiceApi();
+	static ServiceImpl service = new ServiceImpl();
 
 	/**
 	@GetMapping("/hello")
