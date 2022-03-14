@@ -1,13 +1,18 @@
 package it.univpm.OpenWeatherApp.controller;
 
+//import org.json.JSONObject;
+
 import java.io.IOException;
 
-//import org.json.simple.JSONArray;
+//import org.json.JSONArray;
+//import org.json.JSONObject;
 //import org.json.simple.JSONObject;
 //import org.json.simple.parser.JSONParser;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.OpenWeatherApp.service.*;
 //import it.univpm.OpenWeatherApp.models.*;
+
+//import org.json.simple.parser.ParseException;
 
 @RestController
 public class Controller {
@@ -30,7 +37,7 @@ public class Controller {
 		return "Hello!";
 	}
 	*/
-	
+	/**
 	@GetMapping(value="/forecastMeteo")
 	public String getPrevisioneMeteo(@RequestParam(name = "citta") String nomeCitta) {
 		String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "Forecast.txt";
@@ -46,7 +53,7 @@ public class Controller {
 		System.out.println(previsioniMeteo);
 		String dati = "";
 		String data = service.getDato(previsioniMeteo, "dt_txt", '}') + "\n";
-		String valoriPressione = service.getDato(previsioniMeteo, "pressure", ',') + "\n";
+		String valoriPressione = service.getDato(previsioniMeteo, "pressure", ',');
 		dati = data + valoriPressione;
 		System.out.println(service.salvaDati(dati, path));
 		return dati;
@@ -70,6 +77,14 @@ public class Controller {
 	System.out.println(service.salvaDati(pressione, path));
 	return pressione;
 	}
+	
+	@GetMapping(value = "/stampa")
+	public static String Stampa(@RequestParam(name="citta") String cityName) throws IOException {
+		String path = System.getProperty("user.dir") + "/meteo/" + cityName + "Pressure.txt";
+		String dati = service.ottieniDaFile(path, cityName);
+		return dati;
+	}
+	*/
 	
 	//--------------//
 
@@ -95,29 +110,43 @@ public class Controller {
 	}
 	*/
 
-	/**
-	@GetMapping(value = "/getPisa")
-		public ResponseEntity<Object> getPrevisione(){
-		return new ResponseEntity<>(service.ConvertToJson(service.getPrevisioni(service.getPrevJson("Pisa"))), HttpStatus.OK);
-	}
-	*/
-	/**
-	@GetMapping(value = "/getPrev")
-	public ResponseEntity<Object> getPrev(){
-	return new ResponseEntity<>(service.getPrevisioniJSON("Pisa"), HttpStatus.OK);
-}
+	@GetMapping(value = "/pressure")
+		public ResponseEntity<Object> getPrevisione(@RequestParam(name="citta")String nomeCitta){
+			return new ResponseEntity<>(service.getPressure(nomeCitta).toString(), HttpStatus.OK);
+		}
+	
+	
+	@GetMapping(value = "/forecastPressure")
+		public ResponseEntity<Object> getPrev(@RequestParam(name="citta")String nomeCitta){
+			return new ResponseEntity<>(service.getForecastPressure(nomeCitta), HttpStatus.OK);
+		}
 
 	@GetMapping(value="/meteo")
-    public ResponseEntity<Object> getMeteo(@RequestParam(name="citta") String cityName) {
-		return new ResponseEntity<> (service.getPrevisioniJSON(cityName).toString(), HttpStatus.OK);
-    }
-	/**
-	@GetMapping("/salva")
-	public ResponseEntity<Object> salva(@RequestParam String nomeCitta) throws IOException{
-		String path = service.salvaPrevisioni(nomeCitta);
-		return new ResponseEntity<>(path, HttpStatus.OK);
+    	public ResponseEntity<Object> getMeteo(@RequestParam(name="citta") String cityName) {
+			return new ResponseEntity<> (service.getMeteo(cityName).toString(), HttpStatus.OK);
+    	}
+	
+	@GetMapping(value="/forecastMeteo")
+		public ResponseEntity<Object> getForecastMeteo(@RequestParam(name="citta") String cityName) {
+			return new ResponseEntity<> (service.getForecastMeteo(cityName).toString(), HttpStatus.OK);
+    	}
+	
+	@GetMapping("/saveForecastP")
+		public ResponseEntity<Object> salvaPrevisioni(@RequestParam(name="citta") String nomeCitta) {
+			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
+			String forecastPressure = service.getForecastPressure(nomeCitta);
+			return new ResponseEntity<>(service.salvaDati(forecastPressure, path), HttpStatus.OK);
+		}
+	@GetMapping(value="/savePressure")
+	
+	
+	@GetMapping(value="/lettura")
+		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException{
+			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
+			return new ResponseEntity<>(service.letturaDaFile(path), HttpStatus.OK);
 	}
-	*/
+	
+	
 	//@PostMapping("/pressione_min_e_max")
 	
 	//@PostMapping("/hours")
