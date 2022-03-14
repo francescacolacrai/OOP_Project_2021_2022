@@ -40,6 +40,10 @@ import org.springframework.web.client.RestTemplate;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import it.univpm.OpenWeatherApp.models.*;
 
 @Service
@@ -208,8 +212,79 @@ public class ServiceImpl implements Service1{
 		return citta;
 	}
 	
+	public JSONArray letturaDaFile(String path) throws IOException {
+		
+		String lettura;
+			
+		BufferedReader buff = new BufferedReader(new FileReader(path));
+		
+			try {
+			    StringBuilder stringa = new StringBuilder();
+			    String line = buff.readLine();
+
+			    while (line != null) {
+			        stringa.append(line);
+			        stringa.append(System.lineSeparator());
+			        line = buff.readLine();
+			    }
+			    lettura = stringa.toString();
+			} finally {
+			    buff.close();
+			}
+				
+			JSONArray array = new JSONArray();
+			array.put(lettura);
 	
-	/** Metodo alternativo per leggere dal file i dati scritti */
+			return array;	
+    }
+
+	/**
+	public String salvaOgniOra(String nomeCitta) {
+		String path = System.getProperty("user.dir") + "/meteo/" + nomeCitta + "Pressure.txt";
+		File file = new File(path);
+		
+		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+		scheduler.scheduleAtFixedRate(new Runnable() {
+		    
+			@Override
+		    public void run() {
+		    	
+		    	JSONArray pressure = new JSONArray();
+		    	pressure = getPressure(nomeCitta);
+		    	
+		    	JSONObject actualpressure = new JSONObject();
+		    	actualpressure = pressure.getJSONObject(0);
+
+		    			try{
+		    			    if(!file.exists()) {
+		    			        file.createNewFile();
+		    			    }
+
+		    			    FileWriter fileWriter = new FileWriter(file, true);
+		    				
+		    				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+		    			    bufferedWriter.write(actualpressure.toString());
+		    			    bufferedWriter.write("\n");
+		    			    
+		    			    bufferedWriter.close();
+		    			    
+		    			} catch(IOException e) {
+		    			    System.out.println(e);
+		    			}
+		    	
+		    }
+		}, 0, 3, TimeUnit.HOURS);
+		
+		
+		return "Il file è stato salvato in " + path;
+		
+	}
+
+	*/
+	
+	
+
+	/** Metodo alternativo per leggere dal file i dati scritti 
 	
 	public String ottieniDaFile(String path, String citta) throws IOException{
 		
@@ -233,7 +308,8 @@ public class ServiceImpl implements Service1{
 			
 			return everything;
 		}
-	
+	*/
+
 	/**
 	public String leggiFile(String path, String nomeCitta) {
 		File file = new File(path);
@@ -263,6 +339,7 @@ public class ServiceImpl implements Service1{
 	    return valoriPressione;
 	}
 	*/
+	
 	
 	//------------------------//
 
@@ -335,31 +412,5 @@ public class ServiceImpl implements Service1{
 		return path;
 	}
 	*/
-	
-	public JSONArray letturaDaFile(String path) throws IOException {
-		
-		String lettura;
-			
-		BufferedReader buff = new BufferedReader(new FileReader(path));
-		
-			try {
-			    StringBuilder stringa = new StringBuilder();
-			    String line = buff.readLine();
-
-			    while (line != null) {
-			        stringa.append(line);
-			        stringa.append(System.lineSeparator());
-			        line = buff.readLine();
-			    }
-			    lettura = stringa.toString();
-			} finally {
-			    buff.close();
-			}
-				
-			JSONArray array = new JSONArray();
-			array.put(lettura);
-	
-			return array;	
-    }
 	
 }

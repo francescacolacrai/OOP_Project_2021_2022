@@ -31,7 +31,7 @@ public interface Service1 {
 	//public abstract String getDato(String dato, String statistica, char finalChar);
 	//public abstract int getStatisticaFromString(String dato, String statistica);
 	public abstract String salvaDati(String dati, String path);
-	public abstract String ottieniDaFile(String path, String nomeCitta) throws IOException;
+	//public abstract String ottieniDaFile(String path, String nomeCitta) throws IOException;
 	//public abstract JSONObject getPrevJson(String nomeCitta);
 	//public abstract JSONObject getPrevisioniJSON(String nomeCitta);
 	public abstract Citta setPrevisioni(JSONObject object);
