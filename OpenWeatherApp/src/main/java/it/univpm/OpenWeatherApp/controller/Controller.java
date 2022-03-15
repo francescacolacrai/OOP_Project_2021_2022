@@ -144,7 +144,11 @@ public class Controller {
 		return new ResponseEntity<>((service.salvaDati(pressure, path)), HttpStatus.OK);
 	}
 			
-	
+	@GetMapping(value="/saveHourly")
+		public ResponseEntity<Object> salvaOgniTreOre(@RequestParam(name="citta") String nomeCitta) {
+			String path = System.getProperty("user.dir") + "/meteo/" + nomeCitta + "Pressure.txt";
+			return new ResponseEntity<>((service.salvaOgniTreOre(nomeCitta, path)), HttpStatus.OK);
+	}
 	@GetMapping(value="/lettura")
 		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException{
 			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
