@@ -28,15 +28,18 @@ public interface Service1 {
 	public abstract String getData();
 	public abstract JSONObject getForecastMeteo(String nomeCitta);
 	public abstract JSONObject getMeteo(String nomeCitta);
+	public abstract String getPressure(String nomeCitta);
+	public abstract String getForecastPressure(String nomeCitta);
+	public abstract String salvaDati(String dati, String path);
+	public abstract String salvaOgniTreOre(String nomeCitta, String path);
+	public abstract JSONArray letturaDaFile(String path) throws IOException;
+	public abstract JSONObject ConvertToJson(Citta citta);
+	public abstract Citta setPrevisioni(JSONObject object);
 	//public abstract String getDato(String dato, String statistica, char finalChar);
 	//public abstract int getStatisticaFromString(String dato, String statistica);
-	public abstract String salvaDati(String dati, String path);
+	//public abstract String salvaPrevisioni(String nomeCitta) throws IOException;
 	//public abstract String ottieniDaFile(String path, String nomeCitta) throws IOException;
 	//public abstract JSONObject getPrevJson(String nomeCitta);
 	//public abstract JSONObject getPrevisioniJSON(String nomeCitta);
-	public abstract Citta setPrevisioni(JSONObject object);
 	//public abstract JSONArray getPrevisionePressione(String nome);
-	public abstract JSONObject ConvertToJson(Citta citta);
-	//public abstract String salvaPrevisioni(String nomeCitta) throws IOException;
-	public abstract JSONArray letturaDaFile(String path) throws IOException;
 }
