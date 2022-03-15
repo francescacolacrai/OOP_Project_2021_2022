@@ -26,6 +26,22 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 
 <a name="rotte"></a>
 ## Rotte disponibili
+<a name="table"></a>
+
+
+|N°   | Tipo  | Sintassi/Rotta             | Descrizione                                                          |
+|-----|-------|----------------------------|----------------------------------------------------------------------|
+| 1   | GET   |   /pressure?citta=Ancona             |                                                                      |
+| 2   | GET   |    /forecastPressure?citta=Ancona     |                                                                      |
+| 3   | GET   |   /meteo?citta=Ancone                 |                                                                      |
+| 4   | GET   |    /forecastMeteo?citta=Roma        |                                                                      |
+| 5   | GET   |     /saveForecastPcitta=Roma       |                                                                      |   
+| 6   | GET   |     /savePressure?citta= Pisa        |                                                                      |                                   
+| 7   | GET   |     /saveHourly?citta= Pisa           |                                                                      |
+| 8   | GET   |    /lettura"?citta=Pisa              |                                                                       |
+| 9   | POST  |                    |                                                                            |
+| 10  | POST  |                    |                                                                               |
+| 11  | POST  |                    |                                                                             |
 
 <a name="test"></a>
 ## Test
