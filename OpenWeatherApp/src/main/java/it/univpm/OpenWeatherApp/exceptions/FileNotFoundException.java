@@ -3,7 +3,7 @@ package it.univpm.OpenWeatherApp.exceptions;
 /** Questa classe contiene l'eccezione lanciata quando il programma non trova il file richiesto.
  * 
  * @author Francesca Colacrai
- * @author Lionel
+ * @author Djouaka Kelefack Lionel
  * */
 
 public class FileNotFoundException extends Exception {
