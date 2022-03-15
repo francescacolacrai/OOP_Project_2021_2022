@@ -38,7 +38,7 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 | 5   | GET   |     /saveForecastPcitta=Roma       |                                                                      |   
 | 6   | GET   |     /savePressure?citta= Pisa        |                                                                      |                                   
 | 7   | GET   |     /saveHourly?citta= Pisa           |                                                                      |
-| 8   | GET   |    /lettura"?citta=Pisa              |                                                                       |
+| 8   | GET   |    /lettura?citta=Pisa              |                                                                       |
 | 9   | POST  |                    |                                                                            |
 | 10  | POST  |                    |                                                                               |
 | 11  | POST  |                    |                                                                             |
