@@ -2,6 +2,7 @@ package it.univpm.OpenWeatherApp.service;
 
 import java.io.IOException;
 
+import it.univpm.OpenWeatherApp.exceptions.FileNotFoundException;
 //import it.univpm.OpenWeatherApp.exceptions.CittaNotFoundException;
 //import it.univpm.OpenWeatherApp.exceptions.EmptyStringException;
 //import it.univpm.OpenWeatherApp.exceptions.WrongPeriodException;
@@ -32,7 +33,7 @@ public interface Service1 {
 	public abstract String getForecastPressure(String nomeCitta);
 	public abstract String salvaDati(String dati, String path);
 	public abstract String salvaOgniTreOre(String nomeCitta, String path);
-	public abstract JSONArray letturaDaFile(String path) throws IOException;
+	public abstract JSONArray letturaDaFile(String path) throws IOException, FileNotFoundException;
 	public abstract JSONObject ConvertToJson(Citta citta);
 	public abstract Citta setPrevisioni(JSONObject object);
 	//public abstract String getDato(String dato, String statistica, char finalChar);

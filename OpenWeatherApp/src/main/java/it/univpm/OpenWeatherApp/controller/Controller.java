@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.univpm.OpenWeatherApp.exceptions.FileNotFoundException;
 import it.univpm.OpenWeatherApp.service.*;
 //import it.univpm.OpenWeatherApp.models.*;
 
@@ -150,7 +151,7 @@ public class Controller {
 			return new ResponseEntity<>((service.salvaOgniTreOre(nomeCitta, path)), HttpStatus.OK);
 	}
 	@GetMapping(value="/lettura")
-		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException{
+		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException, FileNotFoundException{
 			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
 			return new ResponseEntity<>(service.letturaDaFile(path), HttpStatus.OK);
 	}

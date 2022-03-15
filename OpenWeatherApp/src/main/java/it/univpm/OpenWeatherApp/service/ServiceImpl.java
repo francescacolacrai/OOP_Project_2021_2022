@@ -37,6 +37,8 @@ import org.springframework.web.client.RestTemplate;
 //import java.net.URLConnection;
 //import java.net.HttpURLConnection;
 
+import it.univpm.OpenWeatherApp.exceptions.FileNotFoundException;
+
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
@@ -187,10 +189,12 @@ public class ServiceImpl implements Service1{
 		return path;
 	}	
 	
-	public JSONArray letturaDaFile(String path) throws IOException {
+	public JSONArray letturaDaFile(String path) throws IOException, FileNotFoundException {
 		
 		String lettura;
-			
+		File file = new File(path);
+    	if (!file.exists()) throw new FileNotFoundException("File not found!");
+    	
 		BufferedReader buff = new BufferedReader(new FileReader(path));
 		
 			try {
@@ -212,8 +216,6 @@ public class ServiceImpl implements Service1{
 	
 			return array;	
     }
-	
-	
 	
 	public JSONObject ConvertToJson(Citta citta) {
 		
@@ -272,8 +274,6 @@ public class ServiceImpl implements Service1{
 		return citta;
 	}
 	
-	
-
 	/** Metodo alternativo per leggere dal file i dati scritti 
 	
 	public String ottieniDaFile(String path, String citta) throws IOException{
