@@ -6,12 +6,12 @@ package it.univpm.OpenWeatherApp.exceptions;
  * @author Djouaka Kelefack Lionel
  * */
 
-public class FileNotFoundException extends Exception {
+public class FileNonTrovatoException extends Exception {
 
 	private String messaggio = "File not found!";
 	
 	/** Costruttore della classe */
-	public FileNotFoundException (String messaggio) {
+	public FileNonTrovatoException(String messaggio) {
 		this.messaggio = messaggio;
 		System.out.print(messaggio);
 	}
