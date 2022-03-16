@@ -5,7 +5,7 @@ package it.univpm.OpenWeatherApp.controller;
 import java.io.IOException;
 
 //import org.json.JSONArray;
-//import org.json.JSONObject;
+import org.json.JSONObject;
 //import org.json.simple.JSONObject;
 //import org.json.simple.parser.JSONParser;
 //import org.springframework.http.HttpStatus;
@@ -25,6 +25,16 @@ import it.univpm.OpenWeatherApp.service.*;
 import it.univpm.OpenWeatherApp.models.*;
 
 //import org.json.simple.parser.ParseException;
+
+/**
+ * Classe che gestisce le chiamate dell'utente
+ * 
+ * @author Francesca Colacrai
+ * @author Djouaka Kelefack Lionel
+ * 
+ * @see ServiceImpl
+ *
+ */
 
 @RestController
 public class Controller {
@@ -150,14 +160,14 @@ public class Controller {
 		return new ResponseEntity<>((service.salvaDati(pressure, path)), HttpStatus.OK);
 	}
 	*/
-	/**
+	
 	@GetMapping(value="/infoMeteo")
 		public ResponseEntity<Object> getInfoMeteo(@RequestParam(name="citta")String nomeCitta){
 			Citta citta = service.getPrevisionePressione(nomeCitta);
 			JSONObject obj = service.ConvertToJson(citta);
 			return new ResponseEntity<> (obj.toString(), HttpStatus.OK);
 	}
-	*/
+	
 	
 	@GetMapping(value="/previsionePressione")
     public ResponseEntity<Object> getPressureF(@RequestParam(name="citta") String nomeCitta) {    
@@ -184,10 +194,10 @@ public class Controller {
 	@GetMapping(value="/lettura")
 		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException, FileNonTrovatoException{
 			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
-			return new ResponseEntity<>(service.letturaDaFile(path), HttpStatus.OK);
+			return new ResponseEntity<>(service.ottieniDaFile(path), HttpStatus.OK);
 	}
 	
-
+	
 	//@PostMapping("/pressione_min_e_max")
 	
 	//@PostMapping("/hours")

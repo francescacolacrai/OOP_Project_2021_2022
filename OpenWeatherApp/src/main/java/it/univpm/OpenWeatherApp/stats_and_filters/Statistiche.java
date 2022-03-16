@@ -8,7 +8,7 @@ import it.univpm.OpenWeatherApp.models.*;
 import it.univpm.OpenWeatherApp.service.ServiceImpl;
 
 /** Questa è una classe che implementa i vari metodi necessari per calcolare
- *  le  statistiche richieste.
+ *  le statistiche richieste.
  *  
  *  @author Francesca Colacrai
  *  @author Djouaka Kelefack Lionel
@@ -88,7 +88,6 @@ public class Statistiche {
 				scartiQuadMedi += Math.pow((citta.getRaccoltaDatiMeteo().get(cont).getPressione()) - pressioneMedia, 2);
 				cont++;
 			}
-			
 		}
 		varianza = scartiQuadMedi / cont;	//calcolo varianza
 		

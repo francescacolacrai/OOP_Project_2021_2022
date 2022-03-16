@@ -49,11 +49,20 @@ import java.util.concurrent.TimeUnit;
 
 import it.univpm.OpenWeatherApp.models.*;
 
+/**
+ * Classe che implementa l'interfaccia Service1 e contiene i metodi usati dal controller
+ * 
+ * @author Francesca Colacrai
+ * @author Djouaka Kelefack Lionel
+ * 
+ * @see Service1
+ *
+ */
 @Service
 public class ServiceImpl implements Service1{
 	
 	/** API KEY necessaria per ottenere dati da OpenWeather */
-	private String API_KEY = "5420bdf83a983c382b72481b3e90aafe";
+	private String API_KEY = "42a106b433eca50d8b4d0ba73705fed4";
 	
 	/** Metodo che consente di ottenere la data e l'ora al momento della chiamata.
 	 * 
@@ -66,11 +75,9 @@ public class ServiceImpl implements Service1{
         return formato.format(data);
     }
 	
-	/**
-	 * Questo metodo serve per ottenere le informazioni sulla città da OpenWeather. Viene richiamato da
-	 * getCityWeatherRistrictfromApi(String name).
-	 * @param nome della città.
-	 * @return un oggetto di tipo città popolato delle informazioni sulla città.
+	/** Questo metodo serve per ottenere le informazioni sulla città da OpenWeather
+	 *  @param nomeCitta nome della città
+	 *  @return un oggetto di tipo Citta contenente le informazioni sulla città
 	 */
 	public Citta getInfoCitta(String nomeCitta) {
 		
@@ -88,6 +95,7 @@ public class ServiceImpl implements Service1{
 			citta.setId(id);
 			//citta.setLat(latitudine);
 			//citta.setLong(longitudine);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -95,6 +103,11 @@ public class ServiceImpl implements Service1{
 		return citta;
 	}
 	
+	/** Questo metodo serve per ottenere le previsioni meteo da OpenWeather
+	 *  @param nomeCitta nome della città richiesta
+	 *  @return un JSONObject con le previsioni meteo ottenute 
+	 * 
+	 */
 	public JSONObject getForecastMeteo(String nomeCitta) {
 		
 		/** Richiesta */
@@ -106,6 +119,11 @@ public class ServiceImpl implements Service1{
 		return previsioneMeteo;
 		}
 	
+	/** Questo metodo serve per ottenere i dati meteo da OpenWeather
+	 *  @param nomeCitta nome della città richiesta
+	 *  @return un JSONObject con i dati meteo effettivi 
+	 * 
+	 */
 	public JSONObject getMeteo(String nomeCitta) {
 		
 		/** Richiesta */
@@ -118,6 +136,11 @@ public class ServiceImpl implements Service1{
 		return meteo;
 	}
 	
+	/** Questo metodo serve per ottenere le previsioni sulla pressione. 
+	 *  Invoca il metodo getForecastMeteo(String nomeCitta)
+	 *  @param nomeCitta nome della città
+	 *  @return un oggetto di tipo Citta contenente le informazioni estratte sulla città
+	 */
 	public Citta getPrevisionePressione(String nomeCitta) {
 		
 		JSONObject obj = getForecastMeteo(nomeCitta);
@@ -148,6 +171,11 @@ public class ServiceImpl implements Service1{
 		return citta;
 	}
 	
+	/** Questo metodo serve per ottenere i dati effettivi sulla pressione. 
+	 *  Invoca il metodo getMeteo(String nomeCitta)
+	 *  @param nomeCitta nome della città
+	 *  @return una stringa contenente le informazioni estratte sulla città
+	 */
 	public String getPressione(String nomeCitta) {
 		JSONObject dataForecast = getMeteo(nomeCitta);
 		JSONObject main = (JSONObject)dataForecast.get("main");
@@ -162,10 +190,12 @@ public class ServiceImpl implements Service1{
 	}
 	
 	/**
-	 * Questo metodo richiama getCityWeatherRistrictfromApi(String name) e serve per salvare su file le previsioni meteo per 
-	 * i prossimi cinque giorni della città passata come parametro. Metodo utilizzato per costruire lo storico.
-	 * @param è il nome della città
+	 * Questo metodo salva su file le previsioni meteo per i prossimi cinque giorni
+	 * della città indicata dal parametro. 
+	 * @param nomeCitta nome della città
+	 * @param citta oggetto di tipo Citta
 	 * @return una stringa contenente il path del file salvato.
+	 * @throws IOException per gestire errori dovuti all'input dal file
 	 */
 	public String salvaPrevisioni(String nomeCitta, Citta citta) throws IOException {       
         
@@ -187,6 +217,13 @@ public class ServiceImpl implements Service1{
 		return path;
 	}
 	
+	/** Questo metodo serve per salvare ogni 3 ore i dati effettivi della pressione.
+	 *  Invoca il metodo getPressione(String nomeCitta)
+	 *  
+	 *  @param nomeCitta nome della città
+	 *  @param path percorso in cui salvare il dati
+	 *  @return stringa contenente il path in cui sono memorizzati i dati
+	 */
 	public String salvaOgniTreOre(String nomeCitta, String path) {
 		File file = new File(path);
 		
@@ -219,7 +256,13 @@ public class ServiceImpl implements Service1{
 		return path;
 	}	
 	
-	public JSONArray letturaDaFile(String path) throws IOException, FileNonTrovatoException {
+	/** Questo metodo legge i dati memorizzati sul file 
+	 *  @param path il percorso del file da cui leggere dati
+	 *  @return l'oggetto json contenente i dati memorizzati
+	 *  @throws IOException per gestire errori dovuti all'input dal file
+	 *  @throws FileNonTrovatoException per gestire errori dovuti all'assenza del file indicato
+	 */
+	public JSONObject letturaDaFile(String path) throws IOException, FileNonTrovatoException {
 		
 		String lettura;
 		File file = new File(path);
@@ -241,12 +284,43 @@ public class ServiceImpl implements Service1{
 			    buff.close();
 			}
 				
-			JSONArray array = new JSONArray();
-			array.put(lettura);
+			JSONObject obj = new JSONObject(lettura);
 	
-			return array;	
+			return obj;	
     }
+
+	/** Questo metodo legge i dati memorizzati sul file 
+	 *  @param path il percorso del file da cui leggere dati
+	 *  @return stringa contenente i dati memorizzati
+	 *  @throws IOException per gestire errori dovuti all'input dal file
+	 */
+	public String ottieniDaFile(String path) throws IOException{
+		
+		BufferedReader br = new BufferedReader(new FileReader(path));
+		String everything;
+		
+			try {
+			    StringBuilder sb = new StringBuilder();
+			    String line = br.readLine();
+
+			    while (line != null) {
+			        sb.append(line);
+			        sb.append(System.lineSeparator());
+			        line = br.readLine();
+			    }
+			    everything = sb.toString();
+			    
+			} finally {
+			    br.close();
+			}
+			
+			return everything;
+		}
 	
+	/** Questo metodo serve per convertire un oggetto Citta in Json
+	 *  @param citta oggetto di tipo Citta che si vuole convertire
+	 *  @return oggetto json con i dati della citta passata
+	 */
 	public JSONObject ConvertToJson(Citta citta) {
 		
 		JSONObject finale = new JSONObject();
@@ -270,10 +344,6 @@ public class ServiceImpl implements Service1{
 		
 		return finale;
 	}
-	
-	
-	
-	
 	
 	/**
 	public String salvaDati(String dati, String path) {
@@ -402,32 +472,6 @@ public class ServiceImpl implements Service1{
 		
 		return citta;
 	}
-	*/
-	
-	/** Metodo alternativo per leggere dal file i dati scritti 
-	
-	public String ottieniDaFile(String path, String citta) throws IOException{
-		
-		BufferedReader br = new BufferedReader(new FileReader(path));
-		String everything;
-		
-			try {
-			    StringBuilder sb = new StringBuilder();
-			    String line = br.readLine();
-
-			    while (line != null) {
-			        sb.append(line);
-			        sb.append(System.lineSeparator());
-			        line = br.readLine();
-			    }
-			    everything = sb.toString();
-			    
-			} finally {
-			    br.close();
-			}
-			
-			return everything;
-		}
 	*/
 
 	/**

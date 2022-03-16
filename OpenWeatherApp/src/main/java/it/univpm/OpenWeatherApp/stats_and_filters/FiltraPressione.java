@@ -8,18 +8,25 @@ import org.json.JSONObject;
 
 import it.univpm.OpenWeatherApp.exceptions.StringaErrataException;
 
+/**
+ * Classe che contiene i metodi per effettuare il filtraggio sulla pressione 
+ * 
+ * @author Francesca Colacrai
+ * @author Djouaka Kelefack Lionel
+ *
+ */
 public class FiltraPressione {
 
 	Statistiche stats = new Statistiche();
 	/**
-	 * Questo metodo calcola la media, la varianza, la massima e la minima pressione di un giorno delle città passate 
-	 * in ingresso e filtra rispetto al value. Restituisce un JSONArray contenente JSONObject che rappresentano le città e 
-	 * le relative statistiche sulla pressione. 
-	 * A seconda di value c'è un JSONObject che rappresenta la città con max/min valore di pressione
+	 * Questo metodo calcola media, varianza, presisone massima e minima di un giorno delle città passate 
+	 * in ingresso e filtra rispetto al valore. Restituisce un JSONArray con i JSONObject 
+	 * che rappresentano le città e le relative statistiche sulla pressione. 
+	 * A seconda di "valore" c'è un JSONObject che rappresenta la città con il valore max/min di pressione
 	 * @param citta rappresenta le città con cui si vuole fare la statistica e il filtraggio
 	 * @param valore rappresenta il valore con cui si vuole fare il filtraggio.
 	 * @param flag Parametro per scegliere la statistica giornaliera o su 5 giorni 
-	 * @return JSONArray come descritto sopra. 
+	 * @return JSONArray come anticipato
 	 * @throws StringaErrataException se viene inserita una stringa errata.
 	 * 
 	 */

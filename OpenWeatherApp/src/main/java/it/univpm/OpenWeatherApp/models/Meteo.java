@@ -12,12 +12,6 @@ public class Meteo {
 	/** Dati meteo generali della città */
 	//private String main;
 	
-	/** Temperatura massima */
-	//private double t_max;
-	
-	/** Temperatura minima */
-	//private double t_min;
-	
 	/** Pressione */
 	private int pressione;
 	
@@ -26,9 +20,6 @@ public class Meteo {
 	
 	/** Costruttore della classe */
 	public Meteo() {
-		//this.main = null;
-		//this.t_max = 0;
-		//this.t_min = 0;
 		this.pressione = 0;
 		this.data = null;
 	}
@@ -44,19 +35,13 @@ public class Meteo {
 	}
 	
 	/** Costruttore della classe
-	 * @param t_max Temperatura massima
-	 * @param t_min Temperatura minima
 	 * @param pressione Pressione 
 	 */
 	public Meteo(int pressione) {
-		//super();
 		this.pressione = pressione;
 	}
 	
 	/** Costruttore della classe
-	 * @param main Dati meteo generali
-	 * @param t_min Temperatura minima
-	 * @param t_max Temperatura massima
 	 * @param p Pressione
 	 * @param data Data del rilevamento dati
 	 */
@@ -79,38 +64,6 @@ public class Meteo {
 //	public void setMain(String main) {
 //		this.main = main;
 //	}
-
-	/** Metodo getter
-	 * @return Temperatura massima 
-	 *
-	public double getT_max() {
-		return t_max;
-	}
-	*/
-	
-	/** Metodo setter
-	 * @param t_max Temperatura massima
-	 *
-	public void setT_max(double t_max) {
-		this.t_max = t_max;
-	}
-	*/
-	
-	/** Metodo getter
-	 * @return Temperatura minima
-	 *
-	public double getT_min() {
-		return t_min;
-	}
-	*/
-	
-	/** Metodo setter
-	 * @param t_min Temperatura minima
-	 *
-	public void setT_min(double t_min) {
-		this.t_min = t_min;
-	}
-	*/
 	
 	/** Metodo getter
 	 * @return Pressione
@@ -125,7 +78,6 @@ public class Meteo {
 	public void setPressione(int p) {
 		pressione = p;
 	}
-	
 
 	/** Metodo getter
 	 * @return Data previsione dati meteo 
@@ -151,7 +103,7 @@ public class Meteo {
 	}
 
 	/** Override del metodo equals
-	 *  @questo metodo confronte i datti Meteo con il tipo boolean (true o false)per vedere se sono uguali o no
+	 *  Confronta i datti Meteo con il tipo boolean per vedere se sono uguali o no
 	 */
 
 	/**

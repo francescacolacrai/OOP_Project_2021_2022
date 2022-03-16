@@ -5,6 +5,13 @@ import org.json.JSONArray;
 
 import it.univpm.OpenWeatherApp.exceptions.StringaErrataException;
 
+/**
+ * Classe che contiene i metodi per effettuare il filtraggio
+ * 
+ * @author Francesca Colacrai
+ * @author Djouaka Kelefack Lionel
+ *
+ */
 public class Filtri {
 	private ArrayList<String> citta = new ArrayList<String>();
 	private String valore;
@@ -14,6 +21,7 @@ public class Filtri {
     *  Questo è il costruttore della classe.
     * @param citta è un ArrayList di Stringhe contenenti i nomi delle città che si vogliono filtrare.
     * @param valore valore max o min di param.
+    * @param flag valore utile per stabilire il filtraggio giornaliero o su 5 giorni 
     */
 	public Filtri(ArrayList<String> citta, String valore, boolean flag) {
 		this.citta = citta;

@@ -34,7 +34,7 @@ public interface Service1 {
 	public abstract Citta getPrevisionePressione(String nomeCitta);
 	public abstract String salvaPrevisioni(String nomeCitta, Citta citta) throws IOException;
 	public abstract String salvaOgniTreOre(String nomeCitta, String path);
-	public abstract JSONArray letturaDaFile(String path) throws IOException, FileNonTrovatoException;
+	public abstract JSONObject letturaDaFile(String path) throws IOException, FileNonTrovatoException;
 	public abstract JSONObject ConvertToJson(Citta citta);
 	//public abstract String salvaDati(String dati, String path);
 	//public abstract Citta setPrevisioni(JSONObject object);

@@ -6,7 +6,14 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
+/**
+ * Classe che contiene i metodi per calcolare l'errore di predizione delle città 
+ * in base al periodo indicato
+ * 
+ * @author Francesca Colacrai
+ * @author Djouaka Kelefack Lionel
+ *
+ */
 public class Errore {
 
 	/** Costruttore della classe */
@@ -104,7 +111,7 @@ public class Errore {
 			int giuste = 0;
 			int cont = 0;
 			
-			//mettiamo le informazioni della città che si trova al posto i
+			//Inserisce le informazioni della città del posto i-esimo
 			JSONArray pressioneCitta = new JSONArray();
 			pressioneCitta = ItPressure.next();
 			

@@ -19,23 +19,6 @@ public class Citta  {
 	
 	/** Identificativo della città ottenuto dalle API di OpenWeather */
 	private long idcitta;
-	
-	/** Latitudine della città */
-	//private double latitudine;
-	
-	/** Longitudine della città */
-	//private double longitudine;
-
-	/** Pressione della città */
-	//private double pressione;
-
-	//public double getPressione() {
-	//	return pressione;
-	//}
-
-	//public void setPressione(double pressione) {
-	//	this.pressione = pressione;
-	//}
 
 	/** Vettore che contiene i dati meteo della città */
 	private Vector<Meteo> raccoltaDatiMeteo;
@@ -44,8 +27,6 @@ public class Citta  {
 		this.nomecitta = null;
 		this.paesecitta = null;
 		this.idcitta = 0;
-		//this.longitudine = 0;
-		//this.latitudine = 0;
 	}
 	
 	/** Costruttore della classe
@@ -119,38 +100,6 @@ public class Citta  {
 	public void setId(long idcitta) {
 		this.idcitta = idcitta;
 	}
-	
-	/** Metodo getter
-	 * @return Latitudine della città 
-	 *
-	public double getLat() {
-		return latitudine;
-	}
-	*/
-	
-	/**Metodo setter
-	 * @param latitudine
-	 *
-	public void setLat(double latitudine) {
-		this.latitudine = latitudine;
-	}
-	*/
-	
-	/** Metodo getter
-	 * @return Longitudine della città 
-	 *
-	public double getLong() {
-		return longitudine;
-	}
-	*/
-	
-	/**Metodo setter
-	 * @param longitudine 
-	 *
-	public void setLong(double longitudine) {
-		this.longitudine = longitudine;
-	}
-	*/
 	
 	/** Metodo getter
 	 * @return Vettore dei dati della città 
