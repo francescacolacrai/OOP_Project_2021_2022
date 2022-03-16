@@ -10,7 +10,7 @@ package it.univpm.OpenWeatherApp.models;
 public class Meteo {
 	
 	/** Dati meteo generali della città */
-	private String main;
+	//private String main;
 	
 	/** Temperatura massima */
 	//private double t_max;
@@ -26,7 +26,7 @@ public class Meteo {
 	
 	/** Costruttore della classe */
 	public Meteo() {
-		this.main = null;
+		//this.main = null;
 		//this.t_max = 0;
 		//this.t_min = 0;
 		this.pressione = 0;
@@ -37,9 +37,9 @@ public class Meteo {
 	 * @param main Dati meteo generali
 	 * @param data Data del rilevamento dati
 	 */
-	public Meteo(String main, String data) {
+	public Meteo(String data) {
 		super();
-		this.main = main;
+		//this.main = main;
 		this.data = data;
 	}
 	
@@ -49,7 +49,7 @@ public class Meteo {
 	 * @param pressione Pressione 
 	 */
 	public Meteo(int pressione) {
-		super();
+		//super();
 		this.pressione = pressione;
 	}
 	
@@ -60,8 +60,8 @@ public class Meteo {
 	 * @param p Pressione
 	 * @param data Data del rilevamento dati
 	 */
-	public Meteo(String main, int p, String data) {
-		this.main = main;
+	public Meteo(int p, String data) {
+		//this.main = main;
 		pressione = p;
 		this.data = data;
 	}
@@ -69,16 +69,16 @@ public class Meteo {
 	/** Metodo getter
 	 * @return Dati meteo generali della città
 	 */
-	public String getMain() {
-		return main;
-	}
+	//public String getMain() {
+	//	return main;
+	//}
 
 	/** Metodo setter
 	 * @param main Dati generali relativi al meteo della città
 	 */
-	public void setMain(String main) {
-		this.main = main;
-	}
+//	public void setMain(String main) {
+//		this.main = main;
+//	}
 
 	/** Metodo getter
 	 * @return Temperatura massima 
@@ -115,7 +115,7 @@ public class Meteo {
 	/** Metodo getter
 	 * @return Pressione
 	 */
-	public double getPressione() {
+	public int getPressione() {
 		return pressione;
 	}
 
@@ -146,7 +146,7 @@ public class Meteo {
 	 */
 	@Override
 	public String toString() {
-		String dati = "Main=" + main + ", pressione=" + pressione + "data misurazione=" + data + ".";
+		String dati = "data misurazione: " + data + ", pressione: " + pressione + "\n";
 		return dati;
 	}
 

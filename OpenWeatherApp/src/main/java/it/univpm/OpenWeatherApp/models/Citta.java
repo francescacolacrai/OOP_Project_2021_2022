@@ -49,6 +49,13 @@ public class Citta  {
 	}
 	
 	/** Costruttore della classe
+	 * @param nome Nome della città
+	 */
+	public Citta(String nome) {
+		nomecitta = nome;
+	}
+	
+	/** Costruttore della classe
 	 * @param id Identificativo della città
 	 */
 	public Citta(long id) {
@@ -172,8 +179,8 @@ public class Citta  {
 	@Override
 	public String toString() {
 		System.out.println("I dati relativi alla città cercata sono: \n");
-		String risultati = "nome=" + nomecitta + ", Paese=" + paesecitta + 
-				",id=" + idcitta + ", dati meteo raccolti=" +
+		String risultati = "Nome= " + nomecitta + "\npaese= " + paesecitta + 
+				"\nID= " + idcitta + "\nDati meteo raccolti:\n " +
 				showVector() + ".";
 		return risultati;
 	}

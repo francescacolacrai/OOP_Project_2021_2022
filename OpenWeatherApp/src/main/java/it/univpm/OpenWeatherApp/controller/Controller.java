@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.univpm.OpenWeatherApp.exceptions.FileNotFoundException;
+import it.univpm.OpenWeatherApp.exceptions.*;
 import it.univpm.OpenWeatherApp.service.*;
-//import it.univpm.OpenWeatherApp.models.*;
+import it.univpm.OpenWeatherApp.models.*;
 
 //import org.json.simple.parser.ParseException;
 
@@ -111,6 +111,7 @@ public class Controller {
 	}
 	*/
 
+	/**
 	@GetMapping(value = "/pressure")
 		public ResponseEntity<Object> getPrevisione(@RequestParam(name="citta")String nomeCitta){
 			return new ResponseEntity<>(service.getPressure(nomeCitta).toString(), HttpStatus.OK);
@@ -131,33 +132,62 @@ public class Controller {
 		public ResponseEntity<Object> getForecastMeteo(@RequestParam(name="citta") String cityName) {
 			return new ResponseEntity<> (service.getForecastMeteo(cityName).toString(), HttpStatus.OK);
     	}
+	*/
 	
+	/**
 	@GetMapping("/saveForecastP")
 		public ResponseEntity<Object> salvaPrevisioni(@RequestParam(name="citta") String nomeCitta) {
 			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
-			String forecastPressure = service.getForecastPressure(nomeCitta);
+			String forecastPressure = service.getPrevisionePressure(nomeCitta);
 			return new ResponseEntity<>(service.salvaDati(forecastPressure, path), HttpStatus.OK);
 		}
+	*/
+	/*
 	@GetMapping(value="/savePressure")
 		public ResponseEntity<Object> salvaPressione(@RequestParam(name="citta") String nomeCitta) {
 		String path = System.getProperty("user.dir") + "/meteo/" + nomeCitta + "Pressure.txt";
 		String pressure = service.getPressure(nomeCitta);
 		return new ResponseEntity<>((service.salvaDati(pressure, path)), HttpStatus.OK);
 	}
-			
+	*/
+	/**
+	@GetMapping(value="/infoMeteo")
+		public ResponseEntity<Object> getInfoMeteo(@RequestParam(name="citta")String nomeCitta){
+			Citta citta = service.getPrevisionePressione(nomeCitta);
+			JSONObject obj = service.ConvertToJson(citta);
+			return new ResponseEntity<> (obj.toString(), HttpStatus.OK);
+	}
+	*/
+	
+	@GetMapping(value="/previsionePressione")
+    public ResponseEntity<Object> getPressureF(@RequestParam(name="citta") String nomeCitta) {    
+		return new ResponseEntity<> (service.getPrevisionePressione(nomeCitta).toString(), HttpStatus.OK);
+    }
+
+	@GetMapping(value="/pressione")
+    public ResponseEntity<Object> getPressure(@RequestParam(name="citta") String nomeCitta) {    
+		return new ResponseEntity<> (service.getPressione(nomeCitta).toString(), HttpStatus.OK);
+    }
+	
+	@GetMapping(value="/salvaPrevisioniPressione")
+	public ResponseEntity<Object> salva(@RequestParam(name="citta") String nomeCitta) throws IOException{
+		Citta citta = service.getPrevisionePressione(nomeCitta);
+		return new ResponseEntity<>((service.salvaPrevisioni(nomeCitta, citta)), HttpStatus.OK);
+	}
+	
 	@GetMapping(value="/saveHourly")
 		public ResponseEntity<Object> salvaOgniTreOre(@RequestParam(name="citta") String nomeCitta) {
 			String path = System.getProperty("user.dir") + "/meteo/" + nomeCitta + "Pressure.txt";
 			return new ResponseEntity<>((service.salvaOgniTreOre(nomeCitta, path)), HttpStatus.OK);
 	}
+	
 	@GetMapping(value="/lettura")
-		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException, FileNotFoundException{
+		public ResponseEntity<Object> getCitta(@RequestParam(name="citta") String nomeCitta) throws IOException, FileNonTrovatoException{
 			String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
 			return new ResponseEntity<>(service.letturaDaFile(path), HttpStatus.OK);
 	}
 	
-	
-	
+
 	//@PostMapping("/pressione_min_e_max")
 	
 	//@PostMapping("/hours")
