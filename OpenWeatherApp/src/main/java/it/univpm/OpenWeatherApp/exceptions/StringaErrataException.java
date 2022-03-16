@@ -8,13 +8,13 @@ package it.univpm.OpenWeatherApp.exceptions;
  * @author Djouaka Kelefack Lionel
  *
  */
-public class WrongValueException extends Exception {
+public class StringaErrataException extends Exception {
 	
 	private String messaggio;
 	/** Questo è il costruttore.
 	 *  @param messaggio messaggio d'errore.
 	 */
-	public WrongValueException(String messaggio) {
+	public StringaErrataException(String messaggio) {
 		
 		this.messaggio = messaggio;
 	}

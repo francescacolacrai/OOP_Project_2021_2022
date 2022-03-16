@@ -20,7 +20,7 @@ public class FiltraPressione {
 	 * @param valore rappresenta il valore con cui si vuole fare il filtraggio.
 	 * @param flag Parametro per scegliere la statistica giornaliera o su 5 giorni 
 	 * @return JSONArray come descritto sopra. 
-	 * @throws WrongValueException se viene inserita una stringa errata.
+	 * @throws StringaErrataException se viene inserita una stringa errata.
 	 * 
 	 */
 	

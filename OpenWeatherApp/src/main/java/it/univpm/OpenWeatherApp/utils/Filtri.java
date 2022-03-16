@@ -3,7 +3,7 @@ package it.univpm.OpenWeatherApp.utils;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
-import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
+import it.univpm.OpenWeatherApp.exceptions.StringaErrataException;
 
 public class Filtri {
 	private ArrayList<String> citta = new ArrayList<String>();
@@ -13,7 +13,7 @@ public class Filtri {
    /**
     *  Questo è il costruttore della classe.
     * @param citta è un ArrayList di Stringhe contenenti i nomi delle città che si vogliono filtrare.
-    * @param value valore max o min di param.
+    * @param valore valore max o min di param.
     */
 	public Filtri(ArrayList<String> citta, String valore, boolean flag) {
 		this.citta = citta;
@@ -24,10 +24,10 @@ public class Filtri {
 	/**
 	 * Questo metodo filtra il periodo e il parametro. Richiama altri metodi per filtrare il value.
 	 * @return JSONArray contenente le città filtrate e le statistiche ottenute.
-	 * @throws WrongValueException se è stato inserita una stringa errata per value.
+	 * @throws StringaErrataException se è stato inserita una stringa errata per valore.
 	 */
 	
-	public JSONArray filtra() throws WrongValueException {
+	public JSONArray filtra() throws StringaErrataException {
 		
 		JSONArray array = new JSONArray ();
 		

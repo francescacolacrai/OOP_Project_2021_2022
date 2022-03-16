@@ -86,10 +86,10 @@ public class Errore {
 	 * @param infoPressione è l'ArrayList con le informazioni relative alla 
 	 * 		  pressione di ogni città indicata in "citta".
 	 * @param periodo indica il numero di giorni su cui si vuole calcolare la soglia 
-	 * di errore.
+	 * 		  di errore.
 	 * @return l'ArrayList di JSONObject contenente le informazioni sull'errore di 
-	 * ogni città e come ultimo elemento il JSONObject con le città che rispettano 
-	 * le condizioni indicate da errore
+	 * 		   ogni città e come ultimo elemento il JSONObject con le città che rispettano 
+	 * 		   le condizioni indicate da errore
 	 */
 	public ArrayList<JSONObject> calcolaErrore(ArrayList<String> citta, ArrayList<JSONArray> infoPressione, int periodo) {
 		

@@ -23,7 +23,7 @@ public class Statistiche {
 	 * in base al valore di flag.
 	 * @param nome è il nome della città su cui si vogliono fare statistiche.
 	 * @param flag è il parametro che consente di scegliere la media giornaliera
-	 * o su 5 giorni 
+	 * 		  o su 5 giorni 
 	 * @return JSONObject contenente il nome della città e le relative statistiche
 	 */
 	public JSONObject statistichePressione(String nome, boolean flag) {
