@@ -3,8 +3,10 @@ package it.univpm.OpenWeatherApp.controller;
 //import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.invoke.WrongMethodTypeException;
 
 //import org.json.JSONArray;
+import it.univpm.OpenWeatherApp.stats_and_filters.Statistiche;
 import org.json.JSONObject;
 //import org.json.simple.JSONObject;
 //import org.json.simple.parser.JSONParser;
@@ -13,12 +15,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 //import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.OpenWeatherApp.exceptions.*;
 import it.univpm.OpenWeatherApp.service.*;
@@ -41,6 +41,7 @@ public class Controller {
 
 	@Autowired 
 	static ServiceImpl service = new ServiceImpl();
+	Statistiche stats = new Statistiche();
 
 	/**
 	@GetMapping("/hello")
@@ -199,9 +200,24 @@ public class Controller {
 	
 	
 	//@PostMapping("/pressione_min_e_max")
+
 	
 	//@PostMapping("/hours")
 	
-	//@PostMapping(value = "/stats")
+	@PostMapping(value = "/stats")
+	public ResponseEntity<Object> stats(@RequestBody String body)throws IOException{
+		JSONObject rq = new JSONObject(body);
+		String valore = rq.getString("valore");
+		String nomeCita = rq.getString("citta");
+		try {
+			if (valore.equals("max"))
+				return new ResponseEntity<>(stats.statistichePressione(nomeCita,true).toString(), HttpStatus.OK);
+			else if (valore.equals("min"))
+				return new ResponseEntity<>(stats.statistichePressione(nomeCita,false).toString(), HttpStatus.OK);
+			else throw new WrongMethodTypeException(valore + "tipo non ammesso");
+		} catch (WrongMethodTypeException e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 }
