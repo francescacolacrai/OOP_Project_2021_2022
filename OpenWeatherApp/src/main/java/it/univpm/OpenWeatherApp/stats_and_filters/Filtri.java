@@ -1,4 +1,4 @@
-package it.univpm.OpenWeatherApp.utils;
+package it.univpm.OpenWeatherApp.stats_and_filters;
 
 import java.util.ArrayList;
 import org.json.JSONArray;
