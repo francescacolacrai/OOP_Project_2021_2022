@@ -1,30 +1,18 @@
 package it.univpm.OpenWeatherApp.controller;
 
-//import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.invoke.WrongMethodTypeException;
-
-//import org.json.JSONArray;
 import it.univpm.OpenWeatherApp.stats_and_filters.Statistiche;
 import org.json.JSONObject;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.JSONParser;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.ResponseBody;
-
 import it.univpm.OpenWeatherApp.exceptions.*;
 import it.univpm.OpenWeatherApp.service.*;
 import it.univpm.OpenWeatherApp.models.*;
 
-//import org.json.simple.parser.ParseException;
 
 /**
  * Classe che gestisce le chiamate dell'utente
@@ -49,7 +37,7 @@ public class Controller {
 		return "Hello!";
 	}
 	*/
-	/**
+	/*
 	@GetMapping(value="/forecastMeteo")
 	public String getPrevisioneMeteo(@RequestParam(name = "citta") String nomeCitta) {
 		String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "Forecast.txt";
@@ -57,7 +45,7 @@ public class Controller {
 		System.out.println(service.salvaDati(forecastMeteo, path));
 		return forecastMeteo;
 	}
-	
+
 	@GetMapping(value="/forecastPressure")
 	public static String previsionePressione(@RequestParam(name="citta") String nomeCitta) {
 		String path = System.getProperty("user.dir") + "/forecasts/" + nomeCitta + "ForecastPressure.txt";
@@ -70,7 +58,7 @@ public class Controller {
 		System.out.println(service.salvaDati(dati, path));
 		return dati;
 	}
-	
+
 	@GetMapping(value="/meteo")
 	public static String getDatiMeteo(@RequestParam(name="citta") String nomeCitta){
 		String path = System.getProperty("user.dir") + "/meteo/" + nomeCitta + ".txt";
@@ -161,6 +149,7 @@ public class Controller {
 		return new ResponseEntity<>((service.salvaDati(pressure, path)), HttpStatus.OK);
 	}
 	*/
+
 	
 	@GetMapping(value="/infoMeteo")
 		public ResponseEntity<Object> getInfoMeteo(@RequestParam(name="citta")String nomeCitta){
