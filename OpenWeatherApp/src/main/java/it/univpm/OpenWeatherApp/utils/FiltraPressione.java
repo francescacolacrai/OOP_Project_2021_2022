@@ -6,7 +6,7 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
+import it.univpm.OpenWeatherApp.exceptions.StringaErrataException;
 
 public class FiltraPressione {
 
@@ -24,7 +24,7 @@ public class FiltraPressione {
 	 * 
 	 */
 	
-	public JSONArray filtraPressione(ArrayList<String> citta, String valore, boolean flag) throws WrongValueException {
+	public JSONArray filtraPressione(ArrayList<String> citta, String valore, boolean flag) throws StringaErrataException {
 		
 		JSONArray array = new JSONArray();
 		
@@ -96,7 +96,7 @@ public class FiltraPressione {
 				
 				i++;
 			}
-			else throw new WrongValueException (valore + " non è una stringa valida! Scegliere tra min o max");
+			else throw new StringaErrataException (valore + " non è una stringa valida! Scegliere tra min o max");
 		}
 		
 		JSONObject object = new JSONObject();

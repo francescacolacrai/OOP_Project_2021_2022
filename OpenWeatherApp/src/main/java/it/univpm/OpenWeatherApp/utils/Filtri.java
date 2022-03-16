@@ -7,17 +7,17 @@ import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
 
 public class Filtri {
 	private ArrayList<String> citta = new ArrayList<String>();
-	private String value;
+	private String valore;
 	boolean flag;
 	
    /**
     *  Questo è il costruttore della classe.
-    * @param cities è un ArrayList di Stringhe contenenti i nomi delle città che si vogliono filtrare.
+    * @param citta è un ArrayList di Stringhe contenenti i nomi delle città che si vogliono filtrare.
     * @param value valore max o min di param.
     */
-	public Filtri(ArrayList<String> citta, String value, boolean flag) {
+	public Filtri(ArrayList<String> citta, String valore, boolean flag) {
 		this.citta = citta;
-		this.value = value;
+		this.valore = valore;
 		this.flag = flag;
 	}
 
@@ -32,7 +32,7 @@ public class Filtri {
 		JSONArray array = new JSONArray ();
 		
 		FiltraPressione filtro = new FiltraPressione();
-		array = filtro.filtraPressione(citta, value, flag);
+		array = filtro.filtraPressione(citta, valore, flag);
 		
 		return array;
 	}

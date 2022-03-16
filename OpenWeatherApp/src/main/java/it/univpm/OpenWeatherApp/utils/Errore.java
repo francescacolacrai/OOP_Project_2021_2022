@@ -78,18 +78,20 @@ public class Errore {
 	
 	/**
 	 * Calcola l'errore sulle predizioni di ogni città indicata nell'ArrayList. 
- 	 * Richiama il metodo findDay della classe FindDay, che si occupa di 
- 	 * calcolare il giorno e l'ora da cui partire per il calcolo.
+ 	 * Richiama il metodo selezionaGiorno, che calcola il giorno e l'ora da cui 
+ 	 * partire per il calcolo.
 	 * 
 	 * @param citta è l'ArrayList di stringhe con i nomi delle città di cui si 
 	 * 		  vuole conoscere la soglia di errore.
 	 * @param infoPressione è l'ArrayList con le informazioni relative alla 
 	 * 		  pressione di ogni città indicata in "citta".
-	 * @param period indica il numero di giorni su cui si vuole calcolare la soglia di errore.
-	 * @return l'ArrayList di JSONObject contenente le informazioni sull'errore di ogni città e, come ultimo elemento,
-	 *         il JSONObject contenente le città che rispettano le condizioni indicate da error e value.
+	 * @param periodo indica il numero di giorni su cui si vuole calcolare la soglia 
+	 * di errore.
+	 * @return l'ArrayList di JSONObject contenente le informazioni sull'errore di 
+	 * ogni città e come ultimo elemento il JSONObject con le città che rispettano 
+	 * le condizioni indicate da errore
 	 */
-	public ArrayList<JSONObject> calcolaErrore(ArrayList<String> citta, ArrayList<JSONArray> infoPressione, int period) {
+	public ArrayList<JSONObject> calcolaErrore(ArrayList<String> citta, ArrayList<JSONArray> infoPressione, int periodo) {
 		
 		ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
 		
@@ -112,24 +114,23 @@ public class Errore {
 			
 			
 			//JSONObject dati = new JSONObject();
-			JSONObject dati = this.selezionaGiorno(pressioneCitta, period);
+			JSONObject dati = this.selezionaGiorno(pressioneCitta, periodo);
 		    String dataInizio = dati.getString("date");
 		    int posIniz = dati.getInt("position");
-		    int posFin = this.selezionaGiorno(pressioneCitta, period+1).getInt("position");
+		    int posFin = this.selezionaGiorno(pressioneCitta, periodo+1).getInt("position");
 		    
 		    while(posIniz < posFin) {
 		    	
-		    	for(int k=0; k<pressioneCitta.getJSONArray(period).length(); k++) {
+		    	for(int k=0; k<pressioneCitta.getJSONArray(periodo).length(); k++) {
 		    		
 		    		//JSONObject visibility = new JSONObject();
-		    		JSONObject pressione = pressioneCitta.getJSONArray(period).getJSONObject(k);
+		    		JSONObject pressione = pressioneCitta.getJSONArray(periodo).getJSONObject(k);
 		    		
 		    		if(dataInizio.equals(pressione.getString("data"))) {
-		    			int error;
-		    			error = (info.getJSONObject(posIniz).getInt("pressure")-pressione.getInt("pressure"));
-		    			if(error == 0)
+		    			int errore = (info.getJSONObject(posIniz).getInt("pressure")-pressione.getInt("pressure"));
+		    			if(errore == 0)
 		    				giuste++;
-		    			erroreTot+=error;
+		    			erroreTot += errore;
 		    			cont++;
 		    		}
 		    	}
