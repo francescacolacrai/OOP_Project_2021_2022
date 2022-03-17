@@ -20,7 +20,7 @@ public class OpenWeatherAppApplication {
 		/**
 		 * Dopo l'avvio del programma salva i dati ogni ora relativi alla pressione corrente 
 		 * delle città passate come parametro.
-		 */
+		 
 		ServiceImpl service = new ServiceImpl();
 		String pathA = System.getProperty("user.dir") + "/meteo/" + "Ancona" + "Pressure.txt";
 		String pathP = System.getProperty("user.dir") + "/meteo/" + "Pisa" + "Pressure.txt";
@@ -30,5 +30,6 @@ public class OpenWeatherAppApplication {
 		service.salvaOgniTreOre("Pisa", pathP);
 		service.salvaOgniTreOre("Torino", pathT);
 		service.salvaOgniTreOre("Roma", pathR);
+		*/
 	}
 }

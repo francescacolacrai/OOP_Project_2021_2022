@@ -15,24 +15,24 @@ import it.univpm.OpenWeatherApp.exceptions.StringaErrataException;
 public class Filtri {
 	private ArrayList<String> citta = new ArrayList<String>();
 	private String valore;
-	boolean flag;
+	private String flag;
 	
    /**
     *  Questo è il costruttore della classe.
     * @param citta è un ArrayList di Stringhe contenenti i nomi delle città che si vogliono filtrare.
-    * @param valore valore max o min di param.
-    * @param flag valore utile per stabilire il filtraggio giornaliero o su 5 giorni 
+    * @param valore valore max o min
+    * @param flag valore utile per stabilire il filtraggio giornaliero(true) o su 5 giorni(false)
     */
-	public Filtri(ArrayList<String> citta, String valore, boolean flag) {
+	public Filtri(ArrayList<String> citta, String valore, String flag) {
 		this.citta = citta;
 		this.valore = valore;
 		this.flag = flag;
 	}
 
 	/**
-	 * Questo metodo filtra il periodo e il parametro. Richiama altri metodi per filtrare il value.
-	 * @return JSONArray contenente le città filtrate e le statistiche ottenute.
-	 * @throws StringaErrataException se è stato inserita una stringa errata per valore.
+	 * Questo metodo filtra il periodo e il valore scelto. 
+	 * @return JSONArray contenente le città filtrate e le statistiche ottenute
+	 * @throws StringaErrataException se è stato inserita una stringa errata per valore o flag.
 	 */
 	
 	public JSONArray filtra() throws StringaErrataException {

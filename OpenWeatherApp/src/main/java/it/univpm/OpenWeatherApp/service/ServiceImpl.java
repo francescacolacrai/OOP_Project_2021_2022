@@ -10,12 +10,16 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+//import org.json.simple.JSONArray;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Vector;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import it.univpm.OpenWeatherApp.exceptions.FileNonTrovatoException;
+import it.univpm.OpenWeatherApp.exceptions.*;
 
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
@@ -25,6 +29,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import it.univpm.OpenWeatherApp.models.*;
+//import it.univpm.OpenWeatherApp.stats_and_filters.Statistiche;
+import it.univpm.OpenWeatherApp.stats_and_filters.Errore;
 
 /**
  * Classe che implementa l'interfaccia Service1 e contiene i metodi usati dal controller
@@ -39,7 +45,7 @@ import it.univpm.OpenWeatherApp.models.*;
 public class ServiceImpl implements Service1{
 	
 	/** API KEY necessaria per ottenere dati da OpenWeather */
-	private String API_KEY = "42a106b433eca50d8b4d0ba73705fed4";
+	private String API_KEY = "8e44562b0941908fea35b9a5a6ed46eb";
 	
 	/** Metodo che consente di ottenere la data e l'ora al momento della chiamata.
 	 * 
@@ -239,9 +245,9 @@ public class ServiceImpl implements Service1{
 	 *  @throws IOException per gestire errori dovuti all'input dal file
 	 *  @throws FileNonTrovatoException per gestire errori dovuti all'assenza del file indicato
 	 */
-	public JSONObject letturaDaFile(String path) throws IOException, FileNonTrovatoException {
+	public JSONArray letturaDaFile(String path) throws IOException, FileNonTrovatoException {
 		
-		String lettura;
+		String lettura = "";
 		File file = new File(path);
     	if (!file.exists()) throw new FileNonTrovatoException("File not found!");
     	
@@ -260,10 +266,8 @@ public class ServiceImpl implements Service1{
 			} finally {
 			    buff.close();
 			}
-				
-			JSONObject obj = new JSONObject(lettura);
-	
-			return obj;	
+				JSONArray array = new JSONArray(lettura);
+			return array;	
     }
 
 	/** Questo metodo legge i dati memorizzati sul file 
@@ -323,235 +327,170 @@ public class ServiceImpl implements Service1{
 	}
 	
 	/**
-	public String salvaDati(String dati, String path) {
+	 * Metodo che legge i file su cui sono salvate le informazioni relative alla pressione per 5 giorni. 
+	 * Dopo aver salvato in un ArrayList di JSONArray le informazioni di ogni città, vengono calcolate
+	 * le statistiche sulla pressione.
+	 * 
+	 * @param citta rappresenta i nomi delle città su cui si vogliono fare statistiche. 
+	 * 		  I valori possibili sono "Ancona", "Pisa", "Torino" e "Roma"
+	 * @throws CittaNonTrovataException se la città inserita non è tra quelle indicate
+	 * @throws FileNonTrovatoException se il percorso non esiste
+	 * @throws IOException in caso di errore durante la lettura del file
+	 */
+	public ArrayList<JSONArray> letturaDatiPressione(ArrayList<String> citta) 
+			throws CittaNonTrovataException, FileNonTrovatoException, IOException {
 		
-		File file = new File(path);
+		Iterator<String> iter = citta.iterator();
+		Iterator<String> iter2 = citta.iterator();
+		ArrayList<JSONArray> datiPressione = new ArrayList<JSONArray>();
+		ArrayList<JSONArray> info = new ArrayList<JSONArray>();
 		
-		try{
-            if(file.exists() == false) {
-                file.createNewFile();
-            }
-		}
-		catch (Exception e) {
-			System.out.println ("Error!");
-		}
-		
-		try {
-			int next;
-			BufferedReader r = new BufferedReader (new StringReader (dati));
-			BufferedWriter w = new BufferedWriter (new FileWriter (file, true));
-			
-			do {
-				next = r.read();
-				if (next != -1) {
-					w.write ((char)next);
-				}
-			} while (next != -1);
-				r.close();
-				w.close();
-		}
-		catch (IOException e) { 
-			System.out.println ("Error!");
-		}
-		return path;
-	}
-	*/
-	
-	/**
-	public String getForecastPressure(String nomeCitta) {
-		JSONObject dataForecast = getForecastMeteo(nomeCitta);
-		JSONArray listArray = (JSONArray)dataForecast.get("list");
-		JSONArray dati = new JSONArray();
-		
-		int pressione = 0;
-		String data = "";
-		
-		for (int i = 0; i<listArray.length(); i++) {
-			
-			JSONObject holder = (JSONObject)listArray.get(i);
-			JSONObject main = (JSONObject)holder.get("main");
-			pressione = (int)main.get("pressure");
-			
-			data = (String) holder.get("dt_txt");
-			JSONObject datiEstratti = new JSONObject();
-			datiEstratti.put("Data", data);
-			datiEstratti.put("Pressione", pressione);
-			dati.put(datiEstratti);
-		}
-		return dati.toString();
-	}
-	*/
-	
-	/**
-	public String salvaDati(String dati, String path) {
-		
-		File file = new File(path);
-		
-		try{
-            if(file.exists() == false) {
-                file.createNewFile();
-            }
-		}
-		catch (Exception e) {
-			System.out.println ("Error!");
+		for(int i=0; i<citta.size(); i++) {
+			if(!(citta.get(i).equals("Ancona") || citta.get(i).equals("Roma") || citta.get(i).equals("Pisa") 
+					|| citta.get(i).equals("Torino")))
+				throw new CittaNonTrovataException("Nel file non sono presenti i dati relativi a" +  citta.get(i));
 		}
 		
-		try {
-			int next;
-			BufferedReader r = new BufferedReader (new StringReader (dati));
-			BufferedWriter w = new BufferedWriter (new FileWriter (file, true));
-			
-			do {
-				next = r.read();
-				if (next != -1) {
-					w.write ((char)next);
-				}
-			} while (next != -1);
-				r.close();
-				w.close();
-		}
-		catch (IOException e) { 
-			System.out.println ("Error!");
-		}
-		return path;
-	}
-	*/
-	
-	/**
-	public Citta setPrevisioni(JSONObject object) {
-		Citta citta = new Citta();
-		Vector<Meteo> previsioneDati = new Vector<Meteo>();
-		
-		JSONObject datiCitta = (JSONObject)object.get("city");
-		JSONArray listaDati = (JSONArray)object.get("main");
-		
-		citta.setNome((String)datiCitta.get("name"));
-		citta.setPaese((String)datiCitta.get("country"));
-		citta.setId((long)datiCitta.get("id"));
-		//citta.setLat((double)datiCitta.get("lat"));
-		//citta.setLong((double)datiCitta.get("long"));
-		
-		try {
-			for(int j=0; j<listaDati.length(); j++) {
-				JSONObject listaInfo = listaDati.getJSONObject(j);
-				Meteo previsioneMeteo = new Meteo();
-			
-				previsioneMeteo.setData(getData());
-				previsioneMeteo.setPressione((int)listaInfo.get("pressure"));
-			
-				previsioneDati.add(previsioneMeteo);
-			}
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		
-		citta.setRaccoltaDatiMeteo(previsioneDati);
-		
-		return citta;
-	}
-	*/
-
-	/**
-	public String leggiFile(String path, String nomeCitta) {
-		File file = new File(path);
-		
-		//if(file.exists() == false) throw new FileNotFoundException("File not found!");
-		
-		String valoriPressione = "";
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			StringBuffer buffer=new StringBuffer();
-			String linea;
-
-	        while((linea=reader.readLine())!=null) {
-	            buffer.append(linea);
-	            linea = linea.substring(7, linea.length());
-
-	            linea = reader.readLine();
-
-	            valoriPressione = String.valueOf(getForecastPressure(nomeCitta));
-	        }
-	        reader.close();
-	    }
-	    catch (IOException e) {
-	    	System.out.print("ERRORE DI INPUT/OUTPUT");
-	    }
-		
-	    return valoriPressione;
-	}
-	*/
-	
-	
-	//------------------------//
-
-	/**
-	public JSONObject getPrevisioniJSON(String nomeCitta) {
-		
-		/** Richiesta 
-		String url = "https://api.openweathermap.org/data/2.5/forecast?q=" +
-				nomeCitta + "&appid=" + API_KEY + "&units=metric&lang=it";
-		JSONObject previsione = null;
-		
-		try {
-			URLConnection connessione = new URL(url).openConnection();
-			InputStream input = connessione.getInputStream();
-			String StringaDatiJson = "";
-			String line = "";
+		while(iter.hasNext()) {
+			String path = System.getProperty("user.dir") + "/meteo/" + iter.next() + "Pressure.txt";
 			
 			try {
-				BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
-				//Scanner in = new Scanner(buffer);
-				
-				//while((line = in.nextLine()) != null)
-				while((line = buffer.readLine()) != null)
-				StringaDatiJson += line; //salva il JSON nella stringa
-				//in.close();
+				JSONArray array = letturaDaFile(path);
+				datiPressione.add(array);
 			}
-			finally {
-				input.close();
-				
-			}
-			previsione = (JSONObject)JSONValue.parseWithException(StringaDatiJson); //parsing dei dati
-		}
-		catch(IOException e) {
-			System.out.println("Errore!");
-			e.printStackTrace();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
+			catch(FileNonTrovatoException e) {
+				System.out.println(e.getMessaggio());
+			}	
 		}
 		
-		return previsione;
-	}
-	*/
+		int count = 0;
+		while(iter2.hasNext()) {
+			
+			JSONArray stats = new JSONArray();
+			stats.put(iter2.next());
+			String data = "";
+			
+			int i = 0;
+			
+			while(i < datiPressione.get(count).length()) {
+				JSONArray pressioneGiornaliera = (datiPressione.get(count)).getJSONArray(i);
+				
+				int media = 0, somma = 0, j = 0, massima = 0, minima = 1000;
+				double varianza = 0;
+				
+				while(j < pressioneGiornaliera.length()) {
+					JSONObject obj = pressioneGiornaliera.getJSONObject(j);
+					somma += obj.getInt("pressione");
+					data = obj.getString("data").substring(0,10);
+					if(obj.getInt("pressione") > massima)
+						massima = obj.getInt("pressione");
+					if(obj.getInt("pressione") < minima)
+						minima = obj.getInt("pressione");
+					
+					j++;
+				}
+				
+				media = somma / j;
+				
+				JSONObject dati = new JSONObject();
+				dati.put("data", data);
+				dati.put("massima", massima);
+				dati.put("minima", minima);
+				dati.put("media", media);
+				
+				int k = 0;
+				int scartiQuadMedi = 0;
+				while(k < pressioneGiornaliera.length()) {
+					JSONObject obj2 = pressioneGiornaliera.getJSONObject(k);
+					obj2.getInt("pressione");
+			        scartiQuadMedi += Math.pow((obj2.getInt("pressione") - media), 2);
+			       	k++;
+			     }
+				
+				varianza = scartiQuadMedi / j;
+				dati.put("varianza", varianza);
+				stats.put(dati);
+				
+				i++;
+			}
 	
+			info.add(stats);
+			count++;
+		}
+		
+		return info;
+	
+	}
 	
 	/**
-	public String salvaPrevisioni(String nomeCitta) throws IOException{
-		Citta citta = setPrevisioni(getPrevisioniJSON(nomeCitta));
+	 * Questo metodo serve per raccogliere le informazioni dall file di ogni città inserita 
+	 * e calcola statistiche e le filtra
+	 * 
+	 * @param citta contiene i nomi di tutte le città su cui si vogliono fare statistiche e applicare i filtri.
+	 * @param errore è la soglia con cui si vuole filtrare
+	 * @param valore esprime il filtro che si vuole applicare. I valori consentiti sono "$lt", "$gt" e "=".
+	 * @param periodo rappresenta i giorni di cui si vuole fare la previsione (da 1 a 5).
+	 * @return restituisce l'ArrayList di JSONObject filtrati secondo i filtri indicati.
+	 * @throws CittaNonTrovataException se l'utente inserisce città di cui non sono presenti i file
+	 * @throws PeriodoErratoException se l'utente inserisce valori minori di 1 o maggiori di 5.
+	 * @throws ValoreErratoException se l'utente inserisce o una stringa non ammessa per il valore.
+	 * @throws IOException se si verificano problemi nella lettura del file.
+	 */
+	public ArrayList<JSONObject> letturaErrore(ArrayList<String> citta, int errore, String valore, int periodo) 
+			throws CittaNonTrovataException, PeriodoErratoException, ValoreErratoException, FileNonTrovatoException, IOException {
 		
-		JSONObject oggetto = new JSONObject();
-		oggetto = this.ConvertToJson(citta);
+			for(int i=0; i<citta.size(); i++) {
+				if(!(citta.get(i).equals("Ancona") || citta.get(i).equals("Roma") || citta.get(i).equals("Pisa") || 
+						citta.get(i).equals("Torino"))) 
+					throw new CittaNonTrovataException("Città non presente nel file!");
+			}
 		
-		SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String oggi = data.format(new Date());
-		
-		String nomeFile = nomeCitta + "_" + oggi;
-		String path = System.getProperty("user.home") + "/Previsioni/" + nomeFile + "Forecast.txt";
-
-		try {
-			PrintWriter outputFile = new PrintWriter(new BufferedWriter(new FileWriter(path)));
-			outputFile.write(oggetto.toString());
+			if(periodo < 1 || periodo > 5)
+				throw new PeriodoErratoException(periodo + " non è valido!");
 			
-			outputFile.close();
-			System.out.println("File salvato in " + path);
-		}
-		catch (Exception e) {
-			System.err.println("Errore: " + e);
-		}
-	
-		return path;
+			if(!(valore.equals("$gt") || valore.equals("$lt") || valore.equals("=")))
+				throw new ValoreErratoException(valore + " non è accettabile!");
+		
+			Iterator<String> iter = citta.iterator();
+			
+			ArrayList<JSONArray> pressione = new ArrayList<JSONArray>();
+			ArrayList<JSONObject> errori = new ArrayList<JSONObject>();
+			
+			while(iter.hasNext()) {
+		
+				String path = System.getProperty("user.dir") + "/forecasts/" + iter.next() + "ForecastPressure.txt";
+				JSONArray array = letturaDaFile(path);
+				JSONArray datiPressione = new JSONArray();
+				
+				for(int i=0; i<array.length(); i++) {
+					
+					JSONArray pressione2 = new JSONArray();
+					JSONObject dati = array.getJSONObject(i);
+					JSONArray array2 = dati.getJSONArray("previsioni meteo");
+					
+					
+					for(int j=0; j<array2.length();j++) {
+						
+						JSONObject pressure = new JSONObject();
+						JSONObject oggetto = array2.getJSONObject(j);
+						
+						pressure.put("data", oggetto.get("data"));
+						pressure.put("pressure", oggetto.get("pressure"));
+						pressione2.put(pressure);
+					}
+					
+					datiPressione.put(pressione2);
+
+				}
+				
+				pressione.add(datiPressione);
+				
+			}
+			
+			Errore errore2 = new Errore();
+			errori = errore2.calcolaErrore(citta, pressione, errore, valore, periodo);
+			
+			return errori;
+			
 	}
-	*/
-	
 }

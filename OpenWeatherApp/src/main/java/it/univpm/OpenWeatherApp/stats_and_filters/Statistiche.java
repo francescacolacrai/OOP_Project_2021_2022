@@ -20,11 +20,11 @@ public class Statistiche {
 	 * Questo metodo serve per calcolare le medie giornaliere o su 5 giorni,
 	 * in base al valore di flag.
 	 * @param nome è il nome della città su cui si vogliono fare statistiche.
-	 * @param flag è il parametro che consente di scegliere la media giornaliera
-	 * 		  o su 5 giorni 
+	 * @param flag è il parametro che consente di scegliere la media giornaliera(true)
+	 * 		  o su 5 giorni(false)
 	 * @return JSONObject contenente il nome della città e le relative statistiche
 	 */
-	public JSONObject statistichePressione(String nome, boolean flag) {
+	public JSONObject statistichePressione(String nome, String flag) {
 		
 		Citta citta = new Citta(nome);
 		citta = service.getPrevisionePressione(nome);
@@ -34,15 +34,16 @@ public class Statistiche {
 		int cont = 0;
 		String data = "";
 		
-		//seleziona il giorno nel formato della data ottenuto
+		//seleziona il giorno nel formato della data scelto
 		data += (citta.getRaccoltaDatiMeteo().get(0).getData()).charAt(0);
 		data += (citta.getRaccoltaDatiMeteo().get(0).getData()).charAt(1);
 		
 		String realData = data;
 		double scartiQuadMedi = 0, varianza = 0;
 		
-		int pressioneMax = 0, pressioneMin = citta.getRaccoltaDatiMeteo().get(cont).getPressione();
-		if(flag) {
+		int pressioneMax = 0;
+		int pressioneMin = citta.getRaccoltaDatiMeteo().get(cont).getPressione();
+		if(flag == "false") {
 			while(data.equals(realData)) {
 				sommaPressioni += (citta.getRaccoltaDatiMeteo().get(cont)).getPressione();
 				if(citta.getRaccoltaDatiMeteo().get(cont).getPressione() > pressioneMax)
@@ -98,7 +99,7 @@ public class Statistiche {
 		datiPressione.put("Varianza della pressione", varianza);
 		
 		obj.put("Nome città", nome);
-		obj.put("Dati sulla visibilità", datiPressione);
+		obj.put("Dati sulla pressione", datiPressione);
 		
 		return obj;
 	}

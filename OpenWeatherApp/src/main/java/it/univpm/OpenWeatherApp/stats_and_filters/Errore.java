@@ -75,8 +75,8 @@ public class Errore {
 		}
 		
 		JSONObject informazioni = new JSONObject();
-		informazioni.put("date", primoGiorno.getJSONObject(i-1).getString("data"));
-		informazioni.put("position", i-1);
+		informazioni.put("data", primoGiorno.getJSONObject(i-1).getString("data"));
+		informazioni.put("posizione", i-1);
 		
 		System.out.print(informazioni);
 		
@@ -94,11 +94,13 @@ public class Errore {
 	 * 		  pressione di ogni città indicata in "citta".
 	 * @param periodo indica il numero di giorni su cui si vuole calcolare la soglia 
 	 * 		  di errore.
+	 * @param valore indica la tipologia di filtraggio
+	 * @param error indica la soglia d'errore che si vuole filtrare
 	 * @return l'ArrayList di JSONObject contenente le informazioni sull'errore di 
 	 * 		   ogni città e come ultimo elemento il JSONObject con le città che rispettano 
 	 * 		   le condizioni indicate da errore
 	 */
-	public ArrayList<JSONObject> calcolaErrore(ArrayList<String> citta, ArrayList<JSONArray> infoPressione, int periodo) {
+	public ArrayList<JSONObject> calcolaErrore(ArrayList<String> citta, ArrayList<JSONArray> infoPressione, int error, String valore, int periodo) {
 		
 		ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
 		
@@ -115,22 +117,18 @@ public class Errore {
 			JSONArray pressioneCitta = new JSONArray();
 			pressioneCitta = ItPressure.next();
 			
-			//vado a prendere le informazioni sulla visibilità solo del primo giorno di previsione
-			//JSONArray app = new JSONArray();
-			JSONArray info = pressioneCitta.getJSONArray(0); //ho tutto il primo giorno di visibilità
+			//vado a prendere le informazioni sulla pressione solo del primo giorno di previsione
+			JSONArray info = pressioneCitta.getJSONArray(0); //ho tutto il primo giorno di pressione
 			
-			
-			//JSONObject dati = new JSONObject();
 			JSONObject dati = this.selezionaGiorno(pressioneCitta, periodo);
-		    String dataInizio = dati.getString("date");
-		    int posIniz = dati.getInt("position");
-		    int posFin = this.selezionaGiorno(pressioneCitta, periodo+1).getInt("position");
+		    String dataInizio = dati.getString("data");
+		    int posIniz = dati.getInt("posizione");
+		    int posFin = this.selezionaGiorno(pressioneCitta, periodo + 1).getInt("posizione");
 		    
 		    while(posIniz < posFin) {
 		    	
 		    	for(int k=0; k<pressioneCitta.getJSONArray(periodo).length(); k++) {
-		    		
-		    		//JSONObject visibility = new JSONObject();
+		    	
 		    		JSONObject pressione = pressioneCitta.getJSONArray(periodo).getJSONObject(k);
 		    		
 		    		if(dataInizio.equals(pressione.getString("data"))) {
@@ -152,12 +150,66 @@ public class Errore {
 		  }
 		  
 		  JSONObject infoErrore = new JSONObject();
-		  infoErrore.put("errore ", erroreTot);
+		  infoErrore.put("errore", erroreTot);
 		  infoErrore.put("previsioni indovinate su " + cont, giuste);
-		  infoErrore.put("Città", ItCitta.next());
-            arr.add(infoErrore);
+		  infoErrore.put("Città ", ItCitta.next());
+          arr.add(infoErrore);
 		}
+	       
+	        arr = this.filtroErrore(arr, error, valore);
+			
+			return arr;
+		 
+	}
+	
+	/**
+	 * Questo metodo serve per trovare le città che rispettano i requisiti che l'utente impone sulla soglia di errore.
+	 * In base alla stringa value, il metodo troverà le città che hanno errore maggiore, minore o uguale alla soglia
+	 * di errore inserita dall'utente.
+	 * 
+	 * @param error ArrayList di JSONObject, ciascuno dei quali contiene il nome delle città e il relativo errore.
+	 * @param errore rappresenta la soglia di errore immessa dall'utente.
+	 * @param valore può assumere i valori "$gt","$lt" e "=" a seconda che l'utente voglia sapere quali città abbiano un
+	 *        errore maggiore, minore o uguale a error.
+	 * @return l'ArrayList di JSONObject che aveva avuto in ingresso, con l'aggiunta di un JSONObject in cui sono presenti
+	 *         le città che rispettano la condizione espressa.
+	 */
+	public ArrayList<JSONObject> filtroErrore(ArrayList<JSONObject> errori, int errore, String valore) {
 		
-		return arr;
+		String citta = "";
+		
+		if(valore.equals("$gt")) {
+			for(int i=0; i<errori.size(); i++) {
+				JSONObject raccoltaDati = errori.get(i);
+				int erroreCitta = raccoltaDati.getInt("errore");
+				if (erroreCitta > errore)
+					citta += raccoltaDati.getString("Città ");
+			}
+			JSONObject massimo = new JSONObject();
+			massimo.put(">" + errore, citta);
+			errori.add(massimo);		
+		}
+		else if(valore.equals("$lt")) {
+			for(int i=0; i<errori.size(); i++) {
+				JSONObject raccoltaDati = errori.get(i);
+				int erroreCitta = raccoltaDati.getInt("errore");
+				if (erroreCitta < errore)
+					citta += raccoltaDati.getString("Città ");
+			}
+			
+			JSONObject massimo = new JSONObject();
+			massimo.put("<" + errore, citta);
+			errori.add(massimo);
+		}
+		else if(valore.equals("=")) {
+			for(int i=0; i<errori.size(); i++) {
+				JSONObject raccoltaDati = errori.get(i);
+				int erroreCitta = raccoltaDati.getInt("errore");
+				if (erroreCitta == errore)
+					citta += raccoltaDati.getString("città");
+			}	
+		}
+		return errori;
+		
 	}
 }

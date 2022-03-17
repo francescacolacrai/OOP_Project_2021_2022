@@ -25,13 +25,13 @@ public class FiltraPressione {
 	 * A seconda di "valore" c'è un JSONObject che rappresenta la città con il valore max/min di pressione
 	 * @param citta rappresenta le città con cui si vuole fare la statistica e il filtraggio
 	 * @param valore rappresenta il valore con cui si vuole fare il filtraggio.
-	 * @param flag Parametro per scegliere la statistica giornaliera o su 5 giorni 
+	 * @param flag Parametro per scegliere la statistica giornaliera(true) o su 5 giorni (false)
 	 * @return JSONArray come anticipato
 	 * @throws StringaErrataException se viene inserita una stringa errata.
 	 * 
 	 */
 	
-	public JSONArray filtraPressione(ArrayList<String> citta, String valore, boolean flag) throws StringaErrataException {
+	public JSONArray filtraPressione(ArrayList<String> citta, String valore, String flag) throws StringaErrataException {
 		
 		JSONArray array = new JSONArray();
 		
