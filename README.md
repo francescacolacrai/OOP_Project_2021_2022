@@ -61,23 +61,26 @@ rispetto alla citta per la quale è stato effettuato la ricerca
 (si ottiene il risultato inserendo qualsiasi citta)
 
 
-![Previsione](/home/lionel/Scrivania/img/getMeteo1.png)
+![getMeteo1](https://user-images.githubusercontent.com/90463687/158895989-8f0cd884-bd92-4614-b8da-392ee36a019c.png)
 
-![Previsione](/home/lionel/Scrivania/img/getCitta2.png)
+![getCitta2](https://user-images.githubusercontent.com/90463687/158896040-3c74be38-ea59-4048-bf07-399446340444.png)
+
 
 ### 2. /previsionePressione?citta=
 
 Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni stato fatto la ricerca,
 prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca
+![getPrevisione](https://user-images.githubusercontent.com/90463687/158896089-89b7f1d6-736d-4b08-90b3-df71926926f6.png)
 
-![Previsione](/home/lionel/Scrivania/img/getPrevisione.png)
 
 
 ### 3. /previsionePressione?citta=
 
 Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è stato fatto la ricerca , prende in parametro citta 
 che sarebbe il nome della citta per il quale si vuele fare la ricerca
-![Previsione](/home/lionel/Scrivania/img/1.png)
+
+![1](https://user-images.githubusercontent.com/90463687/158896113-0d48f693-9e2c-45a9-a18e-78d6763b37a6.png)
+
 
 ### 4. /salvaPrevisioniPressione?citta=
 
@@ -85,7 +88,8 @@ Questa rotta consente di salvare le informazione sulla pressione della citta sce
 durante l'esecuzione, il programma crea un file di texto nelle cartella "forecast" con il nome "AnconaForecastPressure.txt" che viene aggiornato ogni orea 
 ch eviena eseguito il programma
 
-![Previsione](/home/lionel/Scrivania/img/2.png)
+![2](https://user-images.githubusercontent.com/90463687/158896136-086ebbb9-2662-46b9-96b1-1165bbe231c6.png)
+
 
 ### 5./saveHourly?citta=
 
@@ -94,7 +98,8 @@ durante l'esecuzione, il programma crea un file di texto nelle cartella "meteo" 
 il nome "Pressure.txt" che viene aggiornato ogni orea
 ch eviena eseguito il programma
 
-![Previsione](/home/lionel/Scrivania/img/3.png)
+![3](https://user-images.githubusercontent.com/90463687/158896170-f597c645-e263-4053-a844-936128004a4e.png)
+
 
 <a name="test"></a>
 ## Test
