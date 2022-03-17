@@ -3,19 +3,8 @@ package it.univpm.OpenWeatherApp.service;
 import java.io.IOException;
 
 import it.univpm.OpenWeatherApp.exceptions.FileNonTrovatoException;
-//import it.univpm.OpenWeatherApp.exceptions.CittaNotFoundException;
-//import it.univpm.OpenWeatherApp.exceptions.EmptyStringException;
-//import it.univpm.OpenWeatherApp.exceptions.WrongPeriodException;
-//import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
 import it.univpm.OpenWeatherApp.models.*;
-//import org.json.JSONArray;
 import org.json.JSONObject;
-//import org.json.simple.JSONObject;
-//import org.json.simple.JSONArray;
-
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.ArrayList;
 
 /** Questa è l'interfaccia che contiene i metodi utilizzati dal controller per effettuare 
  *  le richieste

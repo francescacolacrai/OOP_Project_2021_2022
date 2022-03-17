@@ -1,6 +1,5 @@
 package it.univpm.OpenWeatherApp.models;
 
-//import org.json.simple.JSONObject;
 
 import java.util.Vector;
 

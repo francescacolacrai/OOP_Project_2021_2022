@@ -103,6 +103,8 @@ ch eviena eseguito il programma
 
 <a name="test"></a>
 ## Test
+Il test dell'applicazione si è basato su un metodo di tipo GET per esseguire la richiedere gli informazioni 
+sui dati meteo, e la richiesta dei datti è andata a buon fine.
 
 <a name="documentazione"></a>
 ## Documentazione
