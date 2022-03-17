@@ -49,8 +49,13 @@ Le rotte disponibile sono le seguenti:
 Per effettuare le diversi richieste tramite Postman, l'utente deve avviare il programma come applicazione 
 SpringBoot, eseguire il software Postman o installare l'extenzione postman sur Grome, assicurarsi che 
 la rote sia tipo GET o POST rispetto al tipo di richesta che si vuole effettuare.
-##DESCRIZIONE DELLE ROTTE
-###1. /infoMeteo?citta=
+
+<a name="DESCRIZIONE DELLE ROTTE"></a>
+## DESCRIZIONE DELLE ROTTE
+
+<a name="rotta"></a>
+### 1. /infoMeteo?citta=
+
 Qesta rotta restituisce un JsonArray contenente un JSONObject con le informazione data e ora sulla presione
 rispetto alla citta per la quale è stato effettuato la ricerca 
 (si ottiene il risultato inserendo qualsiasi citta)
@@ -59,7 +64,7 @@ rispetto alla citta per la quale è stato effettuato la ricerca
 
 ![Previsione](/home/lionel/Scrivania/getCitta2.png)
 
-###2. /previsionePressione?citta=
+### 2. /previsionePressione?citta=
 
 Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni stato fatto la ricerca,
 prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca
@@ -67,12 +72,14 @@ prende in parametro citta che sarebbe il nome della citta per il quale si vuele 
 ![Previsione](/home/lionel/Scrivania/getPrevisione.png)
 
 
-###3. /previsionePressione?citta=
+### 3. /previsionePressione?citta=
+
 Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è stato fatto la ricerca , prende in parametro citta 
 che sarebbe il nome della citta per il quale si vuele fare la ricerca
 ![Previsione](/home/lionel/Scrivania/1.png)
 
-###4. /salvaPrevisioniPressione?citta=
+### 4. /salvaPrevisioniPressione?citta=
+
 Questa rotta consente di salvare le informazione sulla pressione della citta scelta
 durante l'esecuzione, il programma crea un file di texto nelle cartella "forecast" con il nome "AnconaForecastPressure.txt" che viene aggiornato ogni orea 
 ch eviena eseguito il programma
