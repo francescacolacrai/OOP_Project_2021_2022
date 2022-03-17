@@ -98,7 +98,7 @@ public class Controller {
 		String meteo = service.getMeteo(nomeCitta);
 	}
 	*/
-	
+
 	/**
 	@GetMapping(value = "/getMeteo")
 		public static JSONObject getPrev(@RequestParam (name="citta")String nomeCitta) throws IOException{
@@ -215,13 +215,13 @@ Questa rotta consente di salvare le informazione sulla previsione di una citta s
 	@PostMapping(value = "/stats")
 	public ResponseEntity<Object> stats(@RequestBody String body)throws IOException{
 		JSONObject rq = new JSONObject(body);
-		String valore = rq.getString("valore");
-		String nomeCita = rq.getString("citta");
+		String valore= rq.getString("Filtri");
+		String nomeCita = rq.getString("valore");
 		try {
 			if (valore.equals("max"))
 				return new ResponseEntity<>(stats.statistichePressione(nomeCita,true).toString(), HttpStatus.OK);
 			else if (valore.equals("min"))
-				return new ResponseEntity<>(stats.statistichePressione(nomeCita,false).toString(), HttpStatus.OK);
+				return new ResponseEntity<>(stats.statistichePressione(nomeCita,true).toString(), HttpStatus.OK);
 			else throw new WrongMethodTypeException(valore + "tipo non ammesso");
 		} catch (WrongMethodTypeException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
