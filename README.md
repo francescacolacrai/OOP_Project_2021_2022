@@ -60,27 +60,23 @@ Qesta rotta restituisce un JsonArray contenente un JSONObject con le informazion
 rispetto alla citta per la quale è stato effettuato la ricerca 
 (si ottiene il risultato inserendo qualsiasi citta)
 
-<p>
-    <img src="relativePath/getMeteo1.png" width="220" height="240" />
-</p>
+![image1](/home/lionel/Scrivania/getMeteo1.png)
 
-![Previsione](/home/lionel/Scrivania/getMeteo1.png)
-
-![Previsione](/home/lionel/Scrivania/getCitta2.png)
+![image2](/home/lionel/Scrivania/getCitta2.png)
 
 ### 2. /previsionePressione?citta=
 
 Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni stato fatto la ricerca,
 prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca
 
-![Previsione](/home/lionel/Scrivania/getPrevisione.png)
+![image3](/home/lionel/Scrivania/getPrevisione.png)
 
 
 ### 3. /previsionePressione?citta=
 
 Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è stato fatto la ricerca , prende in parametro citta 
 che sarebbe il nome della citta per il quale si vuele fare la ricerca
-![Previsione](/home/lionel/Scrivania/1.png)
+![image4](/home/lionel/Scrivania/1.png)
 
 ### 4. /salvaPrevisioniPressione?citta=
 
@@ -88,7 +84,7 @@ Questa rotta consente di salvare le informazione sulla pressione della citta sce
 durante l'esecuzione, il programma crea un file di texto nelle cartella "forecast" con il nome "AnconaForecastPressure.txt" che viene aggiornato ogni orea 
 ch eviena eseguito il programma
 
-![Previsione](/home/lionel/Scrivania/2.png)
+![image5](/home/lionel/Scrivania/2.png)
 
 <a name="test"></a>
 ## Test
