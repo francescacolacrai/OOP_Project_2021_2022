@@ -2,7 +2,10 @@ package it.univpm.OpenWeatherApp.controller;
 
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.invoke.WrongMethodTypeException;
+import java.util.Locale;
+
 import it.univpm.OpenWeatherApp.stats_and_filters.Statistiche;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,15 +153,23 @@ public class Controller {
 	}
 	*/
 
-	
+			/*
+  Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è
+  stato fatto la ricerca , prende in parametro citta che sarebbe il nome
+  della citta per il quale si vuele fare la ricerca
+			 */
 	@GetMapping(value="/infoMeteo")
 		public ResponseEntity<Object> getInfoMeteo(@RequestParam(name="citta")String nomeCitta){
 			Citta citta = service.getPrevisionePressione(nomeCitta);
 			JSONObject obj = service.ConvertToJson(citta);
 			return new ResponseEntity<> (obj.toString(), HttpStatus.OK);
 	}
-	
-	
+
+	/*
+Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni
+stato fatto la ricerca , prende in parametro citta che sarebbe il nome
+della citta per il quale si vuele fare la ricerca
+     */
 	@GetMapping(value="/previsionePressione")
     public ResponseEntity<Object> getPressureF(@RequestParam(name="citta") String nomeCitta) {    
 		return new ResponseEntity<> (service.getPrevisionePressione(nomeCitta).toString(), HttpStatus.OK);
@@ -168,7 +179,9 @@ public class Controller {
     public ResponseEntity<Object> getPressure(@RequestParam(name="citta") String nomeCitta) {    
 		return new ResponseEntity<> (service.getPressione(nomeCitta).toString(), HttpStatus.OK);
     }
-	
+	/*
+Questa rotta consente di salvare le informazione sulla previsione di una citta scelta
+     */
 	@GetMapping(value="/salvaPrevisioniPressione")
 	public ResponseEntity<Object> salva(@RequestParam(name="citta") String nomeCitta) throws IOException{
 		Citta citta = service.getPrevisionePressione(nomeCitta);
@@ -188,7 +201,13 @@ public class Controller {
 	}
 	
 	
-	//@PostMapping("/pressione_min_e_max")
+	@PostMapping("/pressione_min_e_max")
+	public ResponseEntity<Object> filtrapressione(@RequestBody JSONObject filtraPressione, @RequestParam(name="citta", defaultValue ="")String citta,
+												  @RequestParam(name = "flag", required = true)boolean flag) throws UnsupportedEncodingException {
+		citta = citta.toLowerCase(Locale.ROOT);
+		flag = true;
+		return new ResponseEntity<>(citta.getBytes(String.valueOf(true)), HttpStatus.OK);
+	}
 
 	
 	//@PostMapping("/hours")
