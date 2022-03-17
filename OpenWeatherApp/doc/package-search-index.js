@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"it.univpm.OpenWeatherApp"},{"l":"it.univpm.OpenWeatherApp.controller"},{"l":"it.univpm.OpenWeatherApp.exceptions"},{"l":"it.univpm.OpenWeatherApp.models"},{"l":"it.univpm.OpenWeatherApp.service"},{"l":"it.univpm.OpenWeatherApp.stats_and_filters"}];updateSearchResults();
