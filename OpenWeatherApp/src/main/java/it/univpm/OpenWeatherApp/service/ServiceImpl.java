@@ -39,7 +39,7 @@ import it.univpm.OpenWeatherApp.models.*;
 public class ServiceImpl implements Service1{
 	
 	/** API KEY necessaria per ottenere dati da OpenWeather */
-	private String API_KEY = "42a106b433eca50d8b4d0ba73705fed4";
+	private String API_KEY = "ce74fd08278903109816b3acfe7eb4fb";
 	
 	/** Metodo che consente di ottenere la data e l'ora al momento della chiamata.
 	 * 
