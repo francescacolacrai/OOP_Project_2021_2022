@@ -29,19 +29,17 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 <a name="table"></a>
 
 
-|N°   | Tipo  | Sintassi/Rotta             | Descrizione                                                          |
-|-----|-------|----------------------------|----------------------------------------------------------------------|
-| 1   | GET   |   /pressure?citta=Ancona             |                                                                      |
-| 2   | GET   |    /forecastPressure?citta=Ancona     |                                                                      |
-| 3   | GET   |   /meteo?citta=Ancone                 |                                                                      |
-| 4   | GET   |    /forecastMeteo?citta=Roma        |                                                                      |
-| 5   | GET   |     /saveForecastP?citta=Roma       |                                                                      |   
-| 6   | GET   |     /savePressure?citta= Pisa        |                                                                      |                                   
-| 7   | GET   |     /saveHourly?citta= Pisa           |                                                                      |
-| 8   | GET   |    /lettura?citta=Pisa              |                                                                       |
-| 9   | POST  |                    |                                                                            |
-| 10  | POST  |                    |                                                                               |
-| 11  | POST  |                    |                                                                             |
+|N°   | Tipo | Sintassi/Rotta             | Descrizione                                                                                                                                                                                                  |
+|-----|------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | GET  |   /infoMeteo?citta=Ancona       | Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è stato fatto la ricerca , prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca |
+| 2   | GET  |    /previsionePressione?citta=Ancona | Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni stato fatto la ricerca , prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca                                                |
+| 3   | GET  |  /previsionePressione=Ancone    | Questa rotta consente di avere le statistiche sulla pressione data e ora al quale è stato fatto la ricerca , prende in parametro citta che sarebbe il nome della citta per il quale si vuele fare la ricerca                                                                                                                                                                                                              |
+| 4   | GET  |    /salvaPrevisioniPressione?citta=Roma    | Questa rotta consente di salvare le informazione sulla previsione di una citta scelta                                                                                                                                                                                                             |
+| 5   | GET  |     /saveHourly?citta=Roma   |   Questa rotta consente di salvare le informazione sulla previsione di una citta scelta                                                                                                                                                                                                           |   
+| 6   | GET  |    /lettura?citta= Pisa   |                                                                                                                                                                                                              |                                   
+| 7   | POST |     /pressione_min_e_max   |                                                                                                                                                                                                              |
+| 8   | POST |    /stats         |                                                                                                                                                                                                              |
+| 9   | POST |                    |                                                                                                                                                                                                              |
 
 <a name="test"></a>
 ## Test

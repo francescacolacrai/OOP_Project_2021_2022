@@ -1,42 +1,19 @@
 package it.univpm.OpenWeatherApp.service;
 
-//import java.io.*;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-//import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-//import java.io.StringReader;
-//import java.io.StringWriter;
-//import java.io.StringWriter;
 import java.io.IOException;
-//import java.io.InputStreamReader;
-//import java.io.InputStream;
-//import java.io.OutputStream;
-
-//import org.json.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
-//import org.json.simple.JSONObject;
-//import org.json.simple.JSONArray;
-//import org.json.simple.JSONValue;
-
 import java.util.Date;
-//import java.util.Scanner;
 import java.util.Vector;
-//import java.util.HashMap;
-//import java.util.ArrayList;
-//import java.util.Objects;
-//import org.json.simple.parser.JSONParser;
-
-//import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-//import java.net.URL;
-//import java.net.URLConnection;
-//import java.net.HttpURLConnection;
 
 import it.univpm.OpenWeatherApp.exceptions.FileNonTrovatoException;
 

@@ -1,9 +1,7 @@
 package it.univpm.OpenWeatherApp.stats_and_filters;
 
-//import java.util.Vector;
 
 import org.json.JSONObject;
-
 import it.univpm.OpenWeatherApp.models.*;
 import it.univpm.OpenWeatherApp.service.ServiceImpl;
 
