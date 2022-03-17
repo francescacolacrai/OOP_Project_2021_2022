@@ -8,7 +8,7 @@ import it.univpm.OpenWeatherApp.exceptions.FileNonTrovatoException;
 //import it.univpm.OpenWeatherApp.exceptions.WrongPeriodException;
 //import it.univpm.OpenWeatherApp.exceptions.WrongValueException;
 import it.univpm.OpenWeatherApp.models.*;
-import org.json.JSONArray;
+//import org.json.JSONArray;
 import org.json.JSONObject;
 //import org.json.simple.JSONObject;
 //import org.json.simple.JSONArray;
