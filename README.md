@@ -55,6 +55,10 @@ Qesta rotta restituisce un JsonArray contenente un JSONObject con le informazion
 rispetto alla citta per la quale è stato effettuato la ricerca 
 (si ottiene il risultato inserendo qualsiasi citta)
 
+<p>
+    <img src="relativePath/getMeteo1.png" width="220" height="240" />
+</p>
+
 ![Previsione](/home/lionel/Scrivania/getMeteo1.png)
 
 ![Previsione](/home/lionel/Scrivania/getCitta2.png)
