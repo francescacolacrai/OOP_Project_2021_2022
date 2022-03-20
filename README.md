@@ -94,8 +94,8 @@ Durante l'esecuzione, il programma crea un file di testo nelle cartella "forecas
 
 ### 5./saveHourly?citta=
 
-Questa rotta consente di salvare le informazione meteo ogni ora sulla pressione della città scelta
-durante l'esecuzione, il programma crea un file di testo nelle cartella "meteo" con 
+Questa rotta consente di salvare le informazioni meteo ogni ora sulla pressione della città scelta
+durante l'esecuzione. Il programma crea un file di testo nelle cartella "meteo" con 
 il nome "Pressure.txt", preceduto dal nome della città scelta, che viene aggiornato ogni ora
 
 ![3](https://user-images.githubusercontent.com/90463687/158896170-f597c645-e263-4053-a844-936128004a4e.png)
@@ -104,7 +104,7 @@ il nome "Pressure.txt", preceduto dal nome della città scelta, che viene aggior
 Questa rotta di tipo Post permette di filtrare le statistiche di ogni città scelta dall'utente, a seconda del parametro "valore" inserito, su un singolo giorno 
 (flag = true) oppure sui 5 giorni (flag = false), in base al valore di flag inserito la stringa che contiene tutti i dati relativi al filtraggio 
 (pressione media) calcolate per le città inserite e, inoltre, viene restituita anche la pressione media minima o massima a seconda del valore di "valore".
-L'utente deve inserire corretamente questi datti:
+L'utente deve inserire correttamente questi dati:
 
 {
 
