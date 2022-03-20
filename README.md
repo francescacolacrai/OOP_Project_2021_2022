@@ -100,6 +100,51 @@ il nome "Pressure.txt", preceduto dal nome della città scelta, che viene aggior
 
 ![3](https://user-images.githubusercontent.com/90463687/158896170-f597c645-e263-4053-a844-936128004a4e.png)
 
+### 7./pressione_min_e_max
+Questa rotta di tipo Post permette di filtrare le statistiche di ogni città scelta dall'utente, a seconda del parametro "valore" inserito, su un singolo giorno 
+(flag = true) oppure sui 5 giorni (flag = false), in base al valore di flag inserito la stringa che contiene tutti i dati relativi al filtraggio 
+(pressione media) calcolate per le città inserite e, inoltre, viene restituita anche la pressione media minima o massima a seconda del valore di "valore".
+L'utente deve inserire corretamente questi datti:
+
+{
+
+"città": [
+
+{
+
+"nome": "Ancona"
+
+},
+
+{
+
+"nome": "Torino"
+
+},
+
+{
+
+"nome": "Pisa"
+
+},
+
+{
+
+"nome": "Roma"
+
+}
+
+],
+
+"valore": "max",
+
+"flag": "true"
+
+}
+
+Esempio di risposta:
+
+![](../../2354.png)
 
 <a name="test"></a>
 ## Test
