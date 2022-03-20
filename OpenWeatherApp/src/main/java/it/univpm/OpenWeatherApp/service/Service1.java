@@ -31,7 +31,7 @@ public interface Service1 {
 	public abstract String salvaOgniTreOre(String nomeCitta, String path);
 	public abstract JSONArray letturaDaFile(String path) throws IOException, FileNonTrovatoException;
 	public abstract JSONObject ConvertToJson(Citta citta);
-	public abstract String ottieniDaFile(String path) throws IOException;
+	public abstract String ottieniDaFile(String path) throws IOException, FileNonTrovatoException;
 	public ArrayList<JSONObject> letturaErrore(ArrayList<String> citta, int errore, String valore, int periodo) 
 			throws CittaNonTrovataException, PeriodoErratoException, ValoreErratoException, FileNonTrovatoException, IOException;
 	public ArrayList<JSONArray> letturaDatiPressione(ArrayList<String> citta) 

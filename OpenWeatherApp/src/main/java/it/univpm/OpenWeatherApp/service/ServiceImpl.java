@@ -275,7 +275,7 @@ public class ServiceImpl implements Service1{
 	 *  @return stringa contenente i dati memorizzati
 	 *  @throws IOException per gestire errori dovuti all'input dal file
 	 */
-	public String ottieniDaFile(String path) throws IOException{
+	public String ottieniDaFile(String path) throws IOException, FileNonTrovatoException{
 		
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		String everything;
@@ -313,7 +313,6 @@ public class ServiceImpl implements Service1{
 		JSONArray elencoPrevisioni = new JSONArray();
 		
 		for(int i=0; i<(citta.getRaccoltaDatiMeteo()).size(); i++) {
-		//for(Meteo previsioneMeteo : citta.getRaccoltaDatiMeteo()) {
 			JSONObject previsioneMeteo = new JSONObject();
 			previsioneMeteo.put("data", (citta.getRaccoltaDatiMeteo()).get(i).getData());
 			previsioneMeteo.put("pressure", (citta.getRaccoltaDatiMeteo()).get(i).getPressione());

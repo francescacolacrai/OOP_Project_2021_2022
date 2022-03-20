@@ -39,13 +39,13 @@ public class Controller {
 	  * @param nome della città scelta
 	  * @return JSONObject con i dati relativi alle previsioni meteo
 	 */
+	
 	@GetMapping(value="/infoMeteo")
 		public ResponseEntity<Object> getInfoMeteo(@RequestParam(name="citta")String nomeCitta){
 			Citta citta = service.getPrevisionePressione(nomeCitta);
 			JSONObject obj = service.ConvertToJson(citta);
 			return new ResponseEntity<> (obj.toString(), HttpStatus.OK);
 	}
-	
 
 	/**
 	 * Questa rotta consente di avere le statistiche sulla pressione per i prossimi 5 giorni.
