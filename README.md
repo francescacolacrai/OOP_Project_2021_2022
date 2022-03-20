@@ -144,7 +144,9 @@ L'utente deve inserire corretamente questi datti:
 
 Esempio di risposta:
 
-![](../../2354.png)
+![2354](https://user-images.githubusercontent.com/90463687/159142616-83c29f96-3134-4e06-92cf-d5459ddc65da.png)
+
+
 
 <a name="test"></a>
 ## Test
