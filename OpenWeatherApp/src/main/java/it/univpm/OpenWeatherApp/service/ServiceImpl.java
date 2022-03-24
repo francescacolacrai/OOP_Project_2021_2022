@@ -45,7 +45,7 @@ import it.univpm.OpenWeatherApp.stats_and_filters.Errore;
 public class ServiceImpl implements Service1{
 	
 	/** API KEY necessaria per ottenere dati da OpenWeather */
-	private String API_KEY = "8e44562b0941908fea35b9a5a6ed46eb";
+	private String API_KEY = " ";
 	
 	/** Metodo che consente di ottenere la data e l'ora al momento della chiamata.
 	 * 
