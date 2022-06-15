@@ -18,7 +18,7 @@ una città. Con la seguente applicazione si riuscirà anche ad effettuare statis
 ## Introduzione 
 
 Il programma OpenWeatherApp si focalizza sulle previsioni della pressione di una determinata città e ne calcola le statistiche.
-Una volta avviata, l'applicazione inizierà a raccogliere i dati sulla pressione di 4 città, ovvero Ancona, Pisa, Torino e Pisa, salvandole su un file differente ogni ora. Inoltre essa consentirà anche di salvare le previsioni ottenute su 5 giorni per ogni città.
+Una volta avviata, l'applicazione inizierà a raccogliere i dati sulla pressione di 4 città, ovvero Ancona, Pisa, Torino e Roma, salvandole su un file differente ogni ora. Inoltre essa consentirà anche di salvare le previsioni ottenute su 5 giorni per ogni città.
 
 <a name="installazione"></a>
 ## Installazione
